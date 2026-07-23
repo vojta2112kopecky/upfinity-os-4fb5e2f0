@@ -163,7 +163,7 @@ function show(id){
 function refreshCounts(){
   var s=stats();
   var c=$("#sb-count");if(c)c.textContent=s.done+"/"+s.total;
-  var bar=$("#sb-bar i");if(bar)bar.style.width=s.pct+"%";
+  var bar=$("#sb-bar i");if(bar)bar.style.transform="scaleX("+(s.pct/100)+")";
   var lb=$("#sb-pct");if(lb)lb.textContent=s.pct+"%";
   $$(".week-head .cnt").forEach(function(el){
     var wi=+el.dataset.week,days=UPF.plan[wi].days.filter(function(d){return !d.off;});
