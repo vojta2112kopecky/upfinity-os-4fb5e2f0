@@ -158,7 +158,7 @@ function show(id){
   $(".sidebar").classList.remove("open");$(".scrim").classList.remove("on");
   window.scrollTo(0,0);
   if(history.replaceState)history.replaceState(null,"","#"+id);
-  requestAnimationFrame(reveal);
+  reveal();requestAnimationFrame(reveal);setTimeout(reveal,80);setTimeout(reveal,300);
 }
 function refreshCounts(){
   var s=stats();
