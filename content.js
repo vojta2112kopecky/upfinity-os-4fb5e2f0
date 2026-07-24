@@ -93,7 +93,7 @@ lead:"Krok 0: vyber si niku. Pak výzkum přesně podle systému Nejlepší agen
 md:`## Krok 0: Vyber si niku
 > Vyber si **jednu** niku a u té zůstaň. Ideálně takovou, kde už někoho znáš, rozumíš jí, nebo tě baví. Čím vyšší hodnota zakázky, tím méně klientů potřebuješ.
 
-:::🟢 TIER 1 - HIGH TICKET (zakázka 100 000+ Kč)
+:::TIER 1
 - Fotovoltaika a tepelná čerpadla
 - Stavební firmy - rekonstrukce na klíč, dřevostavby
 - Kuchyně a interiéry na míru, zimní zahrady, bazény
@@ -107,7 +107,7 @@ md:`## Krok 0: Vyber si niku
 - Právní kanceláře (rozvody, firemní agenda)
 - Finanční, hypoteční a investiční poradci
 :::
-:::🟡 TIER 2 - MID TICKET (10 000 - 100 000 Kč)
+:::TIER 2
 - Koučky, mentorky, konzultantky
 - Jazykové školy (firemní i individuální kurzy)
 - Osobní trenéři a výživoví poradci s programy
@@ -121,7 +121,7 @@ md:`## Krok 0: Vyber si niku
 - Golfová hřiště a sportovní akademie (členství)
 - Soukromé školky, doučování, kroužky
 :::
-:::🔴 TIER 3 - LOW TICKET (do 10 000 Kč)
+:::TIER 3
 - Kadeřnictví a barbershopy
 - Kosmetika, nehty, řasy, permanentní make-up
 - Masáže, wellness, solária
@@ -132,7 +132,7 @@ md:`## Krok 0: Vyber si niku
 - Půjčovny šatů a obleků
 - Čistírny, opravny, krejčovství
 :::
-:::🔵 BONUS - Sociální sítě a online
+:::BONUS
 - Tvůrci online kurzů a členských sekcí
 - Osobní brandy a influenceři (monetizace publika)
 - E-shopy (výkonnostní marketing)
