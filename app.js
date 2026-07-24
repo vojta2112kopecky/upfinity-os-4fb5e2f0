@@ -4,14 +4,14 @@
 var $=function(s,r){return (r||document).querySelector(s);};
 var $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s));};
 
-/* ---------- mini-markdown renderer ---------- */
+/* ---------- mini-markdown ---------- */
 function esc(s){return (s||"").replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
 function inline(t){
   t=esc(t);
   t=t.replace(/\*\*(.+?)\*\*/g,"<b>$1</b>");
   t=t.replace(/(^|[^*])\*(?!\*)([^*]+?)\*(?!\*)/g,"$1<i>$2</i>");
   t=t.replace(/\[([^\]]+)\]\(([^)]+)\)/g,function(_,a,u){return "<a href=\""+u+"\" target=\"_blank\" rel=\"noopener\">"+a+"</a>";});
-  t=t.replace(/\[([^\]]{1,60}?)\]/g,"<span class=\"ph\">[$1]</span>");
+  t=t.replace(/\[([^\]]{1,70}?)\]/g,"<span class=\"ph\">[$1]</span>");
   return t;
 }
 function md(src){
@@ -23,7 +23,7 @@ function md(src){
       while(i<lines.length&&!/^:::\s*$/.test(lines[i])){bd.push(lines[i]);i++;}i++;
       out.push("<details class=\"acc\"><summary>"+inline(tt)+"</summary><div class=\"acc-body\">"+md(bd.join("\n"))+"</div></details>");continue;}
     if(/^```/.test(ln)){i++;var pb=[];while(i<lines.length&&!/^```/.test(lines[i])){pb.push(esc(lines[i]));i++;}i++;
-      out.push("<div class=\"prompt\">"+pb.join("<br>")+"</div>");continue;}
+      out.push("<div class=\"prompt\"><button class=\"prompt-copy\" type=\"button\">Kopírovat</button><pre>"+pb.join("\n")+"</pre></div>");continue;}
     if(/^!btn /.test(ln)){var m=ln.slice(5).match(/\[([^\]]+)\]\(([^)]+)\)/);
       if(m)out.push("<a class=\"btn primary\" href=\""+m[2]+"\" target=\"_blank\" rel=\"noopener\">"+esc(m[1])+"</a> ");i++;continue;}
     if(/^---\s*$/.test(ln)){out.push("<hr>");i++;continue;}
@@ -45,24 +45,34 @@ function md(src){
 function done(n){try{return localStorage.getItem("upf-day-"+n)==="1";}catch(e){return false;}}
 function setDone(n,v){try{localStorage.setItem("upf-day-"+n,v?"1":"0");}catch(e){}}
 function allDays(){var a=[];UPF.plan.forEach(function(w){w.days.forEach(function(d){a.push(d);});});return a;}
-function stats(){
-  var a=allDays().filter(function(d){return !d.off;});
-  var dn=a.filter(function(d){return done(d.n);}).length;
-  return {done:dn,total:a.length,pct:a.length?Math.round(dn/a.length*100):0};
-}
-function nextDay(){
-  var a=allDays().filter(function(d){return !d.off;});
-  for(var i=0;i<a.length;i++){if(!done(a[i].n))return a[i];}
-  return null;
-}
-function weekDone(wi){
-  var days=UPF.plan[wi].days.filter(function(d){return !d.off;});
-  return days.length>0&&days.every(function(d){return done(d.n);});
+function workDays(){return allDays().filter(function(d){return !d.off;});}
+function stats(){var a=workDays();var dn=a.filter(function(d){return done(d.n);}).length;return {done:dn,total:a.length,pct:a.length?Math.round(dn/a.length*100):0};}
+function nextDay(){var a=workDays();for(var i=0;i<a.length;i++){if(!done(a[i].n))return a[i];}return null;}
+function weekDone(wi){var days=UPF.plan[wi].days.filter(function(d){return !d.off;});return days.length>0&&days.every(function(d){return done(d.n);});}
+
+function dayDate(n){
+  var parts=(UPF.startDate||"2026-07-24").split("-");
+  var base=new Date(+parts[0],+parts[1]-1,+parts[2]);
+  base.setDate(base.getDate()+(n-1));
+  var dow=["ne","po","út","st","čt","pá","so"][base.getDay()];
+  return dow+" "+base.getDate()+". "+(base.getMonth()+1)+".";
 }
 
-/* ---------- pages ---------- */
+function sectionUnlocked(id){
+  var after=UPF.unlocks[id];
+  if(after===undefined||after===0)return true;
+  var need=workDays().filter(function(d){return d.n<=after;});
+  return need.every(function(d){return done(d.n);});
+}
+function unlockLabel(id){
+  var after=UPF.unlocks[id],wi=0;
+  for(var i=0;i<UPF.plan.length;i++){if(UPF.plan[i].days.some(function(d){return d.n===after;})){wi=i;break;}}
+  return "Odemkne se po splnění všech úkolů: "+UPF.plan[wi].week;
+}
+
 var PB_NAV={vyzkum:"vyzkum",trychtyr:"trychtyr",reklamy:"reklamy",prodej:"prodej",doruceni:"doruceni"};
 
+/* ---------- render ---------- */
 function renderPrehled(){
   var s=stats(),nx=nextDay();
   var miles=UPF.milestones.map(function(m){
@@ -70,35 +80,32 @@ function renderPrehled(){
     return "<div class=\"mile"+(ok?" done":"")+"\"><span class=\"dot\"></span><div class=\"ml\">"+esc(m.label)+"</div></div>";
   }).join("");
   var today=nx
-    ? "<div class=\"today reveal\"><div class=\"e\">Dnešní krok · Den "+nx.n+" ("+esc(nx.orig)+")</div><div class=\"t\">"+inline(nx.task.split("\n")[0])+"</div>"+(nx.submit&&nx.submit!=="-"?"<div class=\"d\">Předložíte na Slack: "+esc(nx.submit)+"</div>":"")+"<a class=\"btn\" href=\"#plan\" data-nav=\"plan\">Otevřít plán →</a></div>"
-    : "<div class=\"today reveal\"><div class=\"e\">Hotovo</div><div class=\"t\">Všech 60 dní splněno. Gratulace 🎉</div></div>";
+    ? "<div class=\"today reveal\"><div class=\"e\">Dnešní krok · Den "+nx.n+" · "+dayDate(nx.n)+"</div><div class=\"t\">"+inline(nx.task.split("\n")[0])+"</div>"+(nx.submit?"<div class=\"d\">Do WhatsAppu: "+esc(nx.submit)+"</div>":"")+"<button class=\"btn\" data-goday=\""+nx.n+"\">Otevřít dnešní den →</button></div>"
+    : "<div class=\"today reveal\"><div class=\"e\">Hotovo</div><div class=\"t\">Celý plán splněn. Gratulace 🎉</div></div>";
   return ""
    +"<div class=\"hero reveal\"><div>"
-   +"<p class=\"eyebrow\">Upfinity OS · systém Nejlepšího Konverzkáře</p>"
+   +"<p class=\"eyebrow\">Upfinity OS · systém Nejlepší agentury</p>"
    +"<h1>Prodávej tak, aby ses <span class=\"g\">už nikdy nebál o peníze</span>.</h1>"
-   +"<p class=\"lead\">Kompletní know-how programu Nejlepší Konverzkář (doslovně od Honzy Nedvěda), tvoje poznámky a každodenní plán na 2 měsíce. Vlevo panel, tady výsledky.</p>"
+   +"<p class=\"lead\">Kompletní know-how, tvoje poznámky a každodenní plán. Vlevo panel, tady výsledky. Materiály se odemykají, jak plníš týdny.</p>"
    +"</div><img class=\"hero-mark\" src=\"assets/mark.svg\" alt=\"Upfinity\"></div>"
-   +"<div class=\"stat-row reveal\">"
-   +"<div class=\"stat\"><div class=\"v\"><span class=\"g\" id=\"st-done\">"+s.done+"</span>/"+s.total+"</div><div class=\"l\">splněných dní plánu</div></div>"
-   +"<div class=\"stat\"><div class=\"v\" id=\"st-pct\">"+s.pct+"%</div><div class=\"l\">postup programem</div></div>"
-   +"<div class=\"stat\"><div class=\"v\">"+UPF.sections.length+"</div><div class=\"l\">kapitol know-how</div></div>"
-   +"</div>"
+   +"<div class=\"progwrap reveal\"><div class=\"progwrap-top\"><span class=\"eyebrow\" style=\"margin:0\">Fáze programu</span><span class=\"progpct\"><b id=\"ov-pct\">"+s.pct+"</b>% · "+s.done+"/"+s.total+" dní</span></div>"
+   +"<div class=\"shimmer-bar\"><i id=\"ov-fill\" style=\"width:"+s.pct+"%\"><span class=\"shine\"></span></i></div>"
+   +"<div class=\"miles\">"+miles+"</div></div>"
    +today
-   +"<h2 class=\"reveal\">Fáze programu</h2><div class=\"miles reveal\">"+miles+"</div>"
    +"<h2 class=\"reveal\">Rychlá navigace</h2><div class=\"quick reveal\">"
-   +"<a href=\"#vyzkum\" data-nav=\"vyzkum\"><b>🔎 Zákaznický výzkum</b><span>ChatGPT výzkum + volání živým lidem</span></a>"
-   +"<a href=\"#trychtyr\" data-nav=\"trychtyr\"><b>🧲 Konverzní trychtýř</b><span>Šablony, video, e-book, 5 e-mailů</span></a>"
+   +"<a href=\"#vyzkum\" data-nav=\"vyzkum\"><b>🔎 Zákaznický výzkum</b><span>Nika, ChatGPT výzkum, volání</span></a>"
+   +"<a href=\"#trychtyr\" data-nav=\"trychtyr\"><b>🧲 Konverzní stránka</b><span>Claude prompty, Pixel + CAPI</span></a>"
    +"<a href=\"#reklamy\" data-nav=\"reklamy\"><b>🎬 Reklamy</b><span>KDO CO PROČ JAK + vzory</span></a>"
-   +"<a href=\"#prodej\" data-nav=\"prodej\"><b>📞 Prodejní hovor</b><span>Celý INIZIO scénář + námitky</span></a>"
-   +"<a href=\"#doruceni\" data-nav=\"doruceni\"><b>🤝 Doručení služby</b><span>Faktura, představení, plán klientovi</span></a>"
+   +"<a href=\"#prodej\" data-nav=\"prodej\"><b>📞 Prodejní hovor</b><span>Celý scénář + námitky</span></a>"
+   +"<a href=\"#doruceni\" data-nav=\"doruceni\"><b>🤝 Doručení služby</b><span>Faktura, představení, plán</span></a>"
    +"<a href=\"#poznamky\" data-nav=\"poznamky\"><b>📝 Moje poznámky</b><span>Openery, otázky, pitch</span></a>"
    +"</div>";
 }
 
 function renderPlan(){
-  var h="<p class=\"eyebrow\">Akční plán pro Nejlepšího Konverzkáře</p>"
-   +"<h1>Plán na <span class=\"g\">60 dní</span></h1>"
-   +"<p class=\"lead\">Každodenní plán na 2 měsíce. Týdny 1-7 doslovně dle akčního plánu, týden 8 doručení služby. Odškrtávej.</p>"
+  var h="<p class=\"eyebrow\">Akční plán pro Nejlepší agenturu</p>"
+   +"<h1>Plán na <span class=\"g\">každý den</span></h1>"
+   +"<p class=\"lead\">Odškrtávej. Kapitoly a materiály se odemykají, jak plníš týdny. Každý večer pošli splněný úkol do WhatsAppu.</p>"
    +"<div class=\"quote reveal\">"+md(UPF.planIntro).replace(/^<p>|<\/p>$/g,"").replace(/<\/p>\n?<p>/g,"<br>")+"</div>";
   UPF.plan.forEach(function(w,wi){
     var days=w.days.filter(function(d){return !d.off;});
@@ -109,10 +116,10 @@ function renderPlan(){
       var main=inline(lines[0]);
       var rest=lines.slice(1).map(function(x){return inline(x);}).join("<br>");
       var pb=d.pb?" &nbsp;<a class=\"pblink\" href=\"#"+PB_NAV[d.pb]+"\" data-nav=\""+PB_NAV[d.pb]+"\">📚 kapitola</a>":"";
-      h+="<label class=\"day"+(d.off?" off":"")+(done(d.n)?" done":"")+"\" data-day=\""+d.n+"\">"
-       +"<span class=\"num\">Den "+d.n+"</span>"
-       +"<span class=\"task\"><span class=\"orig\">orig. "+esc(d.orig)+"</span>"+main+(rest?"<br>"+rest:"")
-       +(d.submit&&d.submit!=="-"?"<span class=\"sub\"><b>Předložíte na Slack:</b> "+esc(d.submit)+"</span>":"")
+      h+="<label class=\"day"+(d.off?" off":"")+(done(d.n)?" done":"")+"\" id=\"day-"+d.n+"\" data-day=\""+d.n+"\">"
+       +"<span class=\"num\">Den "+d.n+"<span class=\"date\">"+(d.off?"":dayDate(d.n))+"</span></span>"
+       +"<span class=\"task\">"+main+(rest?"<br>"+rest:"")
+       +(d.submit?"<span class=\"sub\"><b>Do WhatsAppu:</b> "+esc(d.submit)+"</span>":"")
        +pb+"</span>"
        +(d.off?"<span></span>":"<input type=\"checkbox\" "+(done(d.n)?"checked":"")+" data-n=\""+d.n+"\">")
        +"</label>";
@@ -123,77 +130,107 @@ function renderPlan(){
 }
 
 function renderSection(sec){
-  return "<p class=\"eyebrow\">"+sec.eyebrow+"</p>"
-   +"<h1>"+sec.title+"</h1>"
+  if(!sectionUnlocked(sec.id)){
+    return "<p class=\"eyebrow\">"+sec.eyebrow+"</p><h1>"+sec.title+"</h1>"
+     +"<div class=\"locked-card reveal\"><div class=\"lock-ic\">🔒</div><div><b>Zatím zamčeno</b><p>"+unlockLabel(sec.id)+". Odškrtávej úkoly v Plánu a kapitola se odemkne sama.</p><button class=\"btn ghost\" data-nav=\"plan\">Otevřít plán →</button></div></div>";
+  }
+  return "<p class=\"eyebrow\">"+sec.eyebrow+"</p><h1>"+sec.title+"</h1>"
    +"<p class=\"lead\">"+esc(sec.lead)+"</p>"
    +"<div class=\"content reveal\">"+md(sec.md)+"</div>";
 }
+function sectionById(id){return UPF.sections.filter(function(s){return s.id===id;})[0];}
 
 /* ---------- shell ---------- */
 function navItems(){
-  var items=[{id:"prehled",ico:"🏠",nav:"Přehled"},{id:"plan",ico:"📅",nav:"Plán 60 dní"}];
+  var items=[{id:"prehled",ico:"🏠",nav:"Přehled"},{id:"plan",ico:"📅",nav:"Plán"}];
   UPF.sections.forEach(function(s){items.push({id:s.id,ico:s.ico,nav:s.nav});});
   return items;
 }
 function buildSidebar(){
-  var el=$("#sb-nav");
-  var groups={prehled:"Start",plan:"Start",vyzkum:"Know-how · Honza Nedvěd",trychtyr:"",reklamy:"",prodej:"",doruceni:"",poznamky:"Moje",zdroje:""};
+  var groups={prehled:"Start",plan:"Start",vyzkum:"Know-how · Vojta Kopecký",trychtyr:"",reklamy:"",prodej:"",doruceni:"",poznamky:"Moje",zdroje:""};
   var h="",lastG="";
   navItems().forEach(function(it){
     var g=groups[it.id];
     if(g&&g!==lastG){h+="<div class=\"sb-group\">"+g+"</div>";lastG=g;}
-    h+="<div class=\"sb-link\" data-nav=\""+it.id+"\"><span class=\"ico\">"+it.ico+"</span>"+it.nav
-      +(it.id==="plan"?"<span class=\"n\" id=\"sb-count\"></span>":"")+"</div>";
+    var locked=(UPF.unlocks[it.id]!==undefined&&UPF.unlocks[it.id]>0&&!sectionUnlocked(it.id));
+    h+="<div class=\"sb-link"+(locked?" locked":"")+"\" data-nav=\""+it.id+"\"><span class=\"ico\">"+it.ico+"</span>"+it.nav
+      +(it.id==="plan"?"<span class=\"n\" id=\"sb-count\"></span>":(locked?"<span class=\"lk\">🔒</span>":""))+"</div>";
   });
-  el.innerHTML=h;
+  $("#sb-nav").innerHTML=h;
+  $$(".sb-link").forEach(function(l){l.classList.toggle("active",l.dataset.nav===currentId);});
 }
-function show(id){
+var currentId="prehled";
+function show(id, gotoDay){
+  currentId=id;
   $$(".page").forEach(function(p){p.classList.remove("on");});
-  var pg=$("#page-"+id);
-  if(!pg)return;
+  var pg=$("#page-"+id);if(!pg)return;
   if(id==="prehled")pg.innerHTML=renderPrehled();
-  if(id==="plan"&&!pg.dataset.built){pg.innerHTML=renderPlan();pg.dataset.built="1";}
+  else if(id==="plan")pg.innerHTML=renderPlan();
+  else if(UPF.unlocks[id]!==undefined)pg.innerHTML=renderSection(sectionById(id));
   pg.classList.add("on");
-  $$(".sb-link").forEach(function(l){l.classList.toggle("active",l.dataset.nav===id);});
+  buildSidebar();
   $(".sidebar").classList.remove("open");$(".scrim").classList.remove("on");
-  window.scrollTo(0,0);
+  if(gotoDay){
+    var el=$("#day-"+gotoDay);
+    if(el){el.scrollIntoView({behavior:"smooth",block:"center"});el.classList.add("flash");setTimeout(function(){el.classList.remove("flash");},1700);}
+  } else window.scrollTo(0,0);
   if(history.replaceState)history.replaceState(null,"","#"+id);
-  reveal();requestAnimationFrame(reveal);setTimeout(reveal,80);setTimeout(reveal,300);
+  refreshCounts();reveal();requestAnimationFrame(reveal);setTimeout(reveal,90);setTimeout(reveal,320);
 }
+
 function refreshCounts(){
   var s=stats();
   var c=$("#sb-count");if(c)c.textContent=s.done+"/"+s.total;
   var bar=$("#sb-bar i");if(bar)bar.style.transform="scaleX("+(s.pct/100)+")";
   var lb=$("#sb-pct");if(lb)lb.textContent=s.pct+"%";
+  var ov=$("#ov-fill");if(ov)ov.style.width=s.pct+"%";
+  var ovp=$("#ov-pct");if(ovp)ovp.textContent=s.pct;
   $$(".week-head .cnt").forEach(function(el){
     var wi=+el.dataset.week,days=UPF.plan[wi].days.filter(function(d){return !d.off;});
     el.textContent=days.filter(function(d){return done(d.n);}).length+"/"+days.length;
   });
 }
-function reveal(){
-  $$(".reveal:not(.in)").forEach(function(el){
-    var r=el.getBoundingClientRect();
-    if(r.top<window.innerHeight-40)el.classList.add("in");
-  });
+function reveal(){$$(".reveal:not(.in)").forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight-30)el.classList.add("in");});}
+
+/* ---------- EASTER EGG: Mercedes CLA 45 S burnout ---------- */
+function carEgg(){
+  if($("#car-egg"))return;
+  var wrap=document.createElement("div");wrap.id="car-egg";
+  wrap.innerHTML=
+    "<div class=\"skid\"></div>"
+    +"<div class=\"car-rig\">"
+    +"<div class=\"smoke s1\"></div><div class=\"smoke s2\"></div><div class=\"smoke s3\"></div><div class=\"smoke s4\"></div><div class=\"smoke s5\"></div><div class=\"smoke s6\"></div>"
+    +"<img class=\"car-img\" src=\"assets/cla45s.png\" alt=\"Mercedes-AMG CLA 45 S\">"
+    +"</div>";
+  document.body.appendChild(wrap);
+  try{var ac=new (window.AudioContext||window.webkitAudioContext)();
+    var o=ac.createOscillator(),g=ac.createGain();
+    o.type="sawtooth";o.frequency.setValueAtTime(60,ac.currentTime);
+    o.frequency.exponentialRampToValueAtTime(260,ac.currentTime+2.4);
+    o.frequency.exponentialRampToValueAtTime(90,ac.currentTime+2.9);
+    g.gain.setValueAtTime(0.06,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+3);
+    o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+3);}catch(e){}
+  setTimeout(function(){if(wrap.parentNode)wrap.parentNode.removeChild(wrap);},3400);
 }
 
 /* ---------- init ---------- */
 document.addEventListener("DOMContentLoaded",function(){
-  var main=$("#main");
-  main.innerHTML="<div class=\"page\" id=\"page-prehled\"></div><div class=\"page\" id=\"page-plan\"></div>"
-    +UPF.sections.map(function(s){return "<div class=\"page\" id=\"page-"+s.id+"\">"+renderSection(s)+"</div>";}).join("")
-    +"<div class=\"foot\">Upfinity OS · obsah doslovně: Nejlepší Konverzkář (Honza Nedvěd / INIZIO) + moje poznámky</div>";
-  buildSidebar();
+  $("#main").innerHTML="<div class=\"page\" id=\"page-prehled\"></div><div class=\"page\" id=\"page-plan\"></div>"
+    +UPF.sections.map(function(s){return "<div class=\"page\" id=\"page-"+s.id+"\"></div>";}).join("")
+    +"<div class=\"foot\">Upfinity OS · systém Nejlepší agentury · know-how doslovně od Vojty Kopeckého</div>";
 
   document.addEventListener("click",function(e){
+    if(e.target.closest(".sb-brand")||e.target.closest(".logo-egg")){carEgg();return;}
+    var gd=e.target.closest("[data-goday]");
+    if(gd){show("plan",+gd.dataset.goday);return;}
     var nv=e.target.closest("[data-nav]");
     if(nv){e.preventDefault();show(nv.dataset.nav);return;}
+    var pc=e.target.closest(".prompt-copy");
+    if(pc){var pre=pc.parentNode.querySelector("pre");navigator.clipboard.writeText(pre.textContent).then(function(){pc.textContent="Zkopírováno ✓";setTimeout(function(){pc.textContent="Kopírovat";},1600);});return;}
     if(e.target.matches(".day input[type=checkbox]")){
-      var n=+e.target.dataset.n;
-      setDone(n,e.target.checked);
+      var n=+e.target.dataset.n;setDone(n,e.target.checked);
       e.target.closest(".day").classList.toggle("done",e.target.checked);
-      refreshCounts();
-      if($("#page-prehled").classList.contains("on"))show("prehled");
+      refreshCounts();buildSidebar();
     }
   });
   $("#burger").addEventListener("click",function(){$(".sidebar").classList.add("open");$(".scrim").classList.add("on");});
@@ -203,6 +240,5 @@ document.addEventListener("DOMContentLoaded",function(){
 
   var start=location.hash.slice(1);
   show($("#page-"+start)?start:"prehled");
-  refreshCounts();
 });
 })();

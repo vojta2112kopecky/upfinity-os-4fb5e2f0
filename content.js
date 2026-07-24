@@ -1,85 +1,74 @@
-/* Upfinity OS · obsah. HARD RULE: texty Honzy Nedvěda / Konverzkáře DOSLOVNĚ. */
+/* Upfinity OS · obsah. HARD RULE: know-how texty DOSLOVNĚ (Vojta Kopecký / Nejlepší agentura). */
 window.UPF = {};
 
-/* ===================== PLÁN 60 DNÍ ===================== */
+UPF.startDate = "2026-07-24"; /* Den 1 */
+
+/* ===================== PLÁN ===================== */
 UPF.planIntro = "Změňte svůj příběh: Přestaňte si říkat “To nemůžu.” a začněte si říkat “To můžu.”\nPoužijte bolest a potěšení: Bolest je lenost a vykroucení se, slast je splněný úkol.\nDetailní plán akce v malých krůčcích:";
 
 UPF.plan = [
- {week:"Týden 1", sub:"Zákaznický výzkum a první Konverzka · úkoly odevzdáte do kanálu na Slacku “pravidelné-úkoly”", days:[
-  {n:1, orig:"1. 6.", task:"V členské sekci si prostudujte první kapitolu “Zákaznický výzkum”. Podle zadání proveďte výzkum skrze ChatGPT a vytvořte dle zadání také první titulky. Zítra je využijete.", submit:"Titulky do Slacku", pb:"vyzkum"},
-  {n:2, orig:"2. 6.", task:"V členské sekci si projděte kapitolu “První konverzní trychtýř”. Vyberte si jednu z šablon a tu si vložte do svých Konverzek (pokud nemáte, založit si je můžete zde). Následně vložte jeden titulek ze včera do této Konverzky. Zde případně startovací kurz k tomu, jak pracovat s Konverzkami.", submit:"Odkaz na Konvezrku do Slacku", pb:"trychtyr"},
-  {n:3, orig:"3. 6.", task:"Přepsat podle vzoru zbytek první stránky\n(*dobrovolné, ale velmi doporučené: 1x 20 minutový hloubkový rozhovor podnikatelem z vaší niky)", submit:"Odkaz na Konvezrku do Slacku", pb:"trychtyr"},
-  {n:4, orig:"4. 6.", task:"Přepsat první stránku vztahového videa podle scénáře ZDE\n(*dobrovolné, ale velmi doporučené: druhý 20 minutový hloubkový rozhovor podnikatelem z vaší niky)", submit:"Odkaz na první stránku upraveného dokumentu", pb:"trychtyr"},
-  {n:5, orig:"5. 6.", task:"Přepsat druhou stránku vztahového videa podle scénáře ZDE\n(*dobrovolné, ale velmi doporučené: třetí 20 minutový hloubkový rozhovor podnikatelem z vaší niky)", submit:"Odkaz na první stránku upraveného dokumentu", pb:"trychtyr"},
-  {n:6, orig:"7. 6.", task:"Volný den.", off:true},
-  {n:7, orig:"8. 6.", task:"Volný den.", off:true},
+ {week:"Týden 1", sub:"Nika a zákaznický výzkum · úkoly odevzdáte do WhatsAppu", days:[
+  {n:1, task:"Vyberte si niku ze seznamu v kapitole Zákaznický výzkum a proveďte 5 výzkumných hovorů na vaši niku.\nOpener: “Dobrý den, [jméno], já jsem vás našel na webových stránkách, který si myslím, že jsou moc hezký.., nebo takhle, máte tam moc hezký fotky, na těch jste asi vy..” (celý opener v kapitole Zákaznický výzkum)", submit:"Vybraná nika + 5 nahraných hovorů do WhatsAppu", pb:"vyzkum"},
+  {n:2, task:"10x hloubkový 20minutový rozhovor s lidmi z vaší niky.", submit:"Klíčová slova, klíčové fráze, sny a bolesti do WhatsAppu", pb:"vyzkum"},
+  {n:3, task:"10x hloubkový 20minutový rozhovor s lidmi z vaší niky.", submit:"Klíčová slova, klíčové fráze, sny a bolesti do WhatsAppu", pb:"vyzkum"},
+  {n:4, task:"Prostudujte si kapitolu “Zákaznický výzkum”. Podle zadání proveďte výzkum skrze ChatGPT a vytvořte dle zadání také první titulky. Zítra je využijete.", submit:"Titulky do WhatsAppu", pb:"vyzkum"},
+  {n:5, task:"Prostudujte si kapitolu “První konverzní trychtýř”. Pomocí PROMPTU 1 z kapitoly si nechte od Clauda vytvořit svou konverzní stránku (včetně Facebook Pixelu a Conversions API) a vložte do ní jeden titulek ze včera.", submit:"Odkaz na konverzní stránku do WhatsAppu", pb:"trychtyr"},
+  {n:6, task:"Přepsat podle vzoru zbytek první stránky\n(*dobrovolné, ale velmi doporučené: 1x 20 minutový hloubkový rozhovor podnikatelem z vaší niky)", submit:"Odkaz na konverzní stránku do WhatsAppu", pb:"trychtyr"},
+  {n:7, task:"Přepsat první stránku vztahového videa podle scénáře\n(*dobrovolné, ale velmi doporučené: druhý 20 minutový hloubkový rozhovor podnikatelem z vaší niky)", submit:"Odkaz na první stránku upraveného dokumentu", pb:"trychtyr"},
  ]},
- {week:"Týden 2", sub:"Vztahové video a první reklama · úkoly odevzdáte do kanálu na Slacku “pravidelné-úkoly”", days:[
-  {n:8, orig:"8. 6.", task:"Přepsat třetí stránku vztahového videa podle scénáře ZDE", submit:"Odkaz na první stránku upraveného dokumentu", pb:"trychtyr"},
-  {n:9, orig:"9. 6.", task:"Přepsat čtvrtou a pátou stránku vztahového videa podle scénáře ZDE", submit:"Odkaz na první stránku upraveného dokumentu", pb:"trychtyr"},
-  {n:10, orig:"10. 6.", task:"Zkusit si natočit nanečisto vztahové video na mobil.", submit:"Poslat video do Slacku", pb:"trychtyr"},
-  {n:11, orig:"11. 6.", task:"Natočit vztahové video na ostro. (Na šířku)", submit:"Poslat video do Slacku", pb:"trychtyr"},
-  {n:12, orig:"12. 6.", task:"Facebook - Založení a první nastavení účtu", submit:"Poslat snímek, že je založeno"},
-  {n:13, orig:"13. 6.", task:"Text reklamy (KDO, CO, PROČ, JAK) - zde šablona a Standův tahák, který si můžete přepsat pro svou niku. Klikněte zde.", submit:"Poslat odkaz na text", pb:"reklamy"},
-  {n:14, orig:"14. 6.", task:"Tento text reklamy následně natočit ve třech stejných variantách. (Na výšku)", submit:"Poslat video 1 reklamy", pb:"reklamy"},
+ {week:"Týden 2", sub:"Vztahové video a první reklama · úkoly odevzdáte do WhatsAppu", days:[
+  {n:8, task:"Přepsat druhou stránku vztahového videa podle scénáře\n(*dobrovolné, ale velmi doporučené: třetí 20 minutový hloubkový rozhovor podnikatelem z vaší niky)", submit:"Odkaz na první stránku upraveného dokumentu", pb:"trychtyr"},
+  {n:9, task:"Přepsat třetí stránku vztahového videa podle scénáře", submit:"Odkaz na první stránku upraveného dokumentu", pb:"trychtyr"},
+  {n:10, task:"Přepsat čtvrtou a pátou stránku vztahového videa podle scénáře", submit:"Odkaz na první stránku upraveného dokumentu", pb:"trychtyr"},
+  {n:11, task:"Zkusit si natočit nanečisto vztahové video na mobil.", submit:"Poslat video do WhatsAppu", pb:"trychtyr"},
+  {n:12, task:"Natočit vztahové video na ostro. (Na šířku)", submit:"Poslat video do WhatsAppu", pb:"trychtyr"},
+  {n:13, task:"Facebook - Založení a první nastavení účtu. Zároveň si založte Facebook Pixel a Conversions API podle návodu v kapitole První konverzní trychtýř.", submit:"Poslat snímek, že je založeno"},
+  {n:14, task:"Text reklamy (KDO, CO, PROČ, JAK) - šablona a Standův tahák, který si můžete přepsat pro svou niku, je v kapitole Reklamy.", submit:"Poslat odkaz na text", pb:"reklamy"},
  ]},
- {week:"Týden 3", sub:"Spuštění reklam a vztahové e-maily · úkoly odevzdáte do kanálu na Slacku “pravidelné-úkoly”", days:[
-  {n:15, orig:"15. 6.", task:"Založit kampaň a vložit text + video", submit:"Snímek obrazovky"},
-  {n:16, orig:"16. 6.", task:"Přepsání prvního vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
-  {n:17, orig:"17. 6.", task:"Přepsání druhého vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
-  {n:18, orig:"18. 6.", task:"Spustit reklamy :-)", submit:"Snímek obrazovky"},
-  {n:19, orig:"19. 6.", task:"Přepsání třetího vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
-  {n:20, orig:"20. 6.", task:"Přepsání čtvrtého vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
-  {n:21, orig:"21. 6.", task:"Přepsání páteho vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
+ {week:"Týden 3", sub:"Spuštění reklam a vztahové e-maily · úkoly odevzdáte do WhatsAppu", days:[
+  {n:15, task:"Tento text reklamy následně natočit ve třech stejných variantách. (Na výšku)", submit:"Poslat video 1 reklamy", pb:"reklamy"},
+  {n:16, task:"Založit kampaň a vložit text + video", submit:"Snímek obrazovky"},
+  {n:17, task:"Přepsání prvního vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
+  {n:18, task:"Přepsání druhého vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
+  {n:19, task:"Spustit reklamy :-)", submit:"Snímek obrazovky"},
+  {n:20, task:"Přepsání třetího vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
+  {n:21, task:"Přepsání čtvrtého vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
  ]},
- {week:"Týden 4", sub:"Optimalizace a rámovací hovory · úkoly odevzdáte do kanálu na Slacku “pravidelné-úkoly”", days:[
-  {n:22, orig:"22. 6.", task:"Přepsání šestého vztahového e-mailu", submit:"Odkaz na dokument s textem"},
-  {n:23, orig:"23. 6.", task:"Příprava nových reklam KDO, CO, PROČ, JAK - alespoň 2 nová videa (Může být stejný text, ale s jinou udičkou. Tj. první větou.)", submit:"Video reklamy", pb:"reklamy"},
-  {n:24, orig:"24. 6.", task:"Příprava statistik pro společné setkání:\nKolik bylo utraceno?\nKolik přišlo leadů?\nKolik bylo telefonních čísel?\nKolik zamluvených konzultací?\nKolik proběhlo prodejních hovorů?", submit:"Soupis statistik do chatu"},
-  {n:25, orig:"25. 6.", task:"První rámovací hovor podle scénáře (odkaz)", submit:"Záznam hovoru", pb:"prodej"},
-  {n:26, orig:"26. 6.", task:"Druhý rámovací hovor podle scénáře (odkaz)", submit:"Záznam hovoru", pb:"prodej"},
-  {n:27, orig:"27. 6.", task:"Vytvoření A/B jednoho testu nadpisů na Konverzce podle informací z rámovacích hovorů.", submit:"Snímek obrazovky nového nadpisu."},
-  {n:28, orig:"28. 6.", task:"Volný den.", off:true},
+ {week:"Týden 4", sub:"Optimalizace a rámovací hovory · úkoly odevzdáte do WhatsAppu", days:[
+  {n:22, task:"Přepsání pátého vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
+  {n:23, task:"Přepsání šestého vztahového e-mailu", submit:"Odkaz na dokument s textem"},
+  {n:24, task:"Příprava nových reklam KDO, CO, PROČ, JAK - alespoň 2 nová videa (Může být stejný text, ale s jinou udičkou. Tj. první větou.)", submit:"Video reklamy", pb:"reklamy"},
+  {n:25, task:"Příprava statistik pro společné setkání:\nKolik bylo utraceno?\nKolik přišlo leadů?\nKolik bylo telefonních čísel?\nKolik zamluvených konzultací?\nKolik proběhlo prodejních hovorů?", submit:"Soupis statistik do chatu"},
+  {n:26, task:"První rámovací hovor podle scénáře", submit:"Záznam hovoru", pb:"prodej"},
+  {n:27, task:"Druhý rámovací hovor podle scénáře", submit:"Záznam hovoru", pb:"prodej"},
+  {n:28, task:"Vytvoření A/B jednoho testu nadpisů na konverzní stránce podle informací z rámovacích hovorů.", submit:"Snímek obrazovky nového nadpisu."},
  ]},
- {week:"Týden 5", sub:"Rámovací hovory a statistiky · úkoly odevzdáte do kanálu na Slacku “pravidelné-úkoly”", days:[
-  {n:29, orig:"29. 6.", task:"Třetí rámovací hovor podle scénáře (odkaz)", submit:"Odkaz na dokument s textem", pb:"prodej"},
-  {n:30, orig:"30. 6.", task:"Čtvrtý rámovací hovor podle scénáře (odkaz)", submit:"Video reklamy", pb:"prodej"},
-  {n:31, orig:"1. 7.", task:"Aktualizování statistik pro společné setkání:\nKolik bylo utraceno?\nKolik přišlo leadů?\nKolik bylo telefonních čísel?\nKolik zamluvených konzultací?\nKolik proběhlo prodejních hovorů?", submit:"Soupis statistik do chatu"},
-  {n:32, orig:"2. 7.", task:"Volný den.", off:true},
-  {n:33, orig:"3. 7.", task:"Volný den.", off:true},
-  {n:34, orig:"4. 7.", task:"Volný den.", off:true},
-  {n:35, orig:"5. 7.", task:"Volný den.", off:true},
+ {week:"Týden 5", sub:"Prodej · úkoly odevzdáte do WhatsAppu", days:[
+  {n:29, task:"Třetí rámovací hovor podle scénáře", submit:"Záznam hovoru", pb:"prodej"},
+  {n:30, task:"Čtvrtý rámovací hovor podle scénáře", submit:"Záznam hovoru", pb:"prodej"},
+  {n:31, task:"Aktualizování statistik pro společné setkání:\nKolik bylo utraceno?\nKolik přišlo leadů?\nKolik bylo telefonních čísel?\nKolik zamluvených konzultací?\nKolik proběhlo prodejních hovorů?", submit:"Soupis statistik do chatu"},
+  {n:32, task:"Prodejní hovory podle scénáře (dle rezervací v Calendly)", submit:"Záznamy hovorů do WhatsAppu", pb:"prodej"},
+  {n:33, task:"Prodejní hovory podle scénáře (dle rezervací v Calendly)", submit:"Záznamy hovorů do WhatsAppu", pb:"prodej"},
+  {n:34, task:"Volný den.", off:true},
+  {n:35, task:"Volný den.", off:true},
  ]},
- {week:"Týden 6", sub:"Webinářový trychtýř · úkoly odevzdáte do kanálu na Slacku “pravidelné-úkoly”", days:[
-  {n:36, orig:"6. 7.", task:"Prostudovat si Webinářový trychtýř v členské sekci", submit:"-"},
-  {n:37, orig:"7. 7.", task:"Vytvoření Konverzky (zduplikujte e-mailový magnet z prvního měsíce)", submit:"Odkaz na Konverzku", pb:"trychtyr"},
-  {n:38, orig:"8. 7.", task:"Založit Zoom link + e-maily (s odkazem)", submit:"Printscreen prvního mailu"},
-  {n:39, orig:"9. 7.", task:"Slidy 1 - 35 (šablona Powerpointu)", submit:"PDF prezentace"},
-  {n:40, orig:"10. 7.", task:"Slidy 36 - 70", submit:"PDF prezentace"},
-  {n:41, orig:"11. 7.", task:"Slidy 71 - 105", submit:"PDF prezentace"},
-  {n:42, orig:"12. 7.", task:"Volný den.", off:true},
+ {week:"Týden 6", sub:"Doručení služby · kroky doslovně z kapitoly “Začátek spolupráce a představení”", days:[
+  {n:36, task:"Zaslat mu fakturu za vaše služby (začínáte pracovat po jejím uhrazení, nikoliv po vystavení - toto je důležité pro kvalitu spolupráce a motivaci klienta optimálně spolupracovat)", submit:"Uhrazená faktura", pb:"doruceni"},
+  {n:37, task:"Spolu s fakturou poslat k podpisu obchodní podmínky. Spolupráce vašeho klienta k ničemu nezavazuje, tedy se zněním podmínek nebývá problém. Pokud by problém vznikl, je to varovné znamení, že klient možná bude problematický.", submit:"Podepsané podmínky", pb:"doruceni"},
+  {n:38, task:"Představení podle scénáře. Po uhrazení platby se s klientem spojíte v rámci prvního pracovního hovoru a předvedete své natrénované představení.", submit:"Proběhlý první pracovní hovor", pb:"doruceni"},
+  {n:39, task:"Zaúkolujete svého zákazníka. Pro rychlé zahájení prací budete potřebovat od klienta rychle doplnit informace a vy si o ně efektivně požádáte.", submit:"Podklady A-D od klienta", pb:"doruceni"},
+  {n:40, task:"Dáte klientovi plán. Lidé milují plány a jízdní řády. Bez plánu vzniká úzkost a vy chcete, aby se s vámi zákazník cítil bezpečně. Pokud s vámi bude cítit úzkost, spíše o zakázku přijdete.", submit:"Odeslaný plán klientovi", pb:"doruceni"},
+  {n:41, task:"Volný den.", off:true},
+  {n:42, task:"Volný den.", off:true},
  ]},
- {week:"Týden 7", sub:"Webinář: slidy · úkoly odevzdáte do kanálu na Slacku “pravidelné-úkoly”", days:[
-  {n:43, orig:"13. 7.", task:"Slidy 106 - 115", submit:"PDF prezentace"},
-  {n:44, orig:"14. 7.", task:"Slidy 116 - 136", submit:"PDF prezentace"},
-  {n:45, orig:"15. 7.", task:"Slidy 137 - 157", submit:"PDF prezentace"},
-  {n:46, orig:"16. 7.", task:"Slidy 158 - 178", submit:"PDF prezentace"},
-  {n:47, orig:"17. 7.", task:"Slidy 179 - 200", submit:"PDF prezentace"},
-  {n:48, orig:"18. 7.", task:"Slidy 201 - 230", submit:"PDF prezentace"},
-  {n:49, orig:"19. 7.", task:"Volný den.", off:true},
- ]},
- {week:"Týden 8", sub:"Doručení služby · kroky doslovně z kapitoly “Začátek spolupráce a představení”", days:[
-  {n:50, orig:"krok 1", task:"Zaslat mu fakturu za vaše služby (začínáte pracovat po jejím uhrazení, nikoliv po vystavení - toto je důležité pro kvalitu spolupráce a motivaci klienta optimálně spolupracovat)", submit:"Uhrazená faktura", pb:"doruceni"},
-  {n:51, orig:"krok 2", task:"Spolu s fakturou poslat k podpisu obchodní podmínky. Spolupráce vašeho klienta k ničemu nezavazuje, tedy se zněním podmínek nebývá problém. Pokud by problém vznikl, je to varovné znamení, že klient možná bude problematický.", submit:"Podepsané podmínky", pb:"doruceni"},
-  {n:52, orig:"krok 3", task:"Představení podle scénáře. Po uhrazení platby se s klientem spojíte v rámci prvního pracovního hovoru a předvedete své natrénované představení.", submit:"Proběhlý první pracovní hovor", pb:"doruceni"},
-  {n:53, orig:"krok 4", task:"Zaúkolujete svého zákazníka. Pro rychlé zahájení prací budete potřebovat od klienta rychle doplnit informace a vy si o ně efektivně požádáte.", submit:"Podklady A-D od klienta", pb:"doruceni"},
-  {n:54, orig:"krok 5", task:"Dáte klientovi plán. Lidé milují plány a jízdní řády. Bez plánu vzniká úzkost a vy chcete, aby se s vámi zákazník cítil bezpečně. Pokud s vámi bude cítit úzkost, spíše o zakázku přijdete.", submit:"Odeslaný plán klientovi", pb:"doruceni"},
-  {n:55, orig:"1. týden", task:"Zákaznický výzkum a návrh konverzního trychtýře v PPT (dám vám šablonu, nebojte)", submit:"Návrh trychtýře", pb:"doruceni"},
-  {n:56, orig:"2. týden", task:"Grafický návrh Konverzky (dám vám pěknou šablonu, nebojte) a iterace na základě konzultace s klientem", submit:"Grafický návrh", pb:"doruceni"},
-  {n:57, orig:"3. týden", task:"Návrh a spuštění prvním Facebook reklam s rozpočtem 100-200 Kč denně.", submit:"Spuštěné reklamy", pb:"doruceni"},
-  {n:58, orig:"4. týden", task:"Optimalizace reklam a první A/B testy klíčových proměnných (nadpisy, obrázky...)", submit:"A/B testy", pb:"doruceni"},
-  {n:59, orig:"5. týden", task:"REPORT: Vyhodnocení prvních výsledků a návrh plánu na další měsíc", submit:"Report klientovi", pb:"doruceni"},
-  {n:60, orig:"·", task:"Volný den. Gratulace, systém jede.", off:true},
+ {week:"Týden 7", sub:"Práce pro klienta · plán doslovně z kapitoly “Dejte klientovi plán”", days:[
+  {n:43, task:"1. týden: Zákaznický výzkum a návrh konverzního trychtýře v PPT", submit:"Návrh trychtýře", pb:"doruceni"},
+  {n:44, task:"2. týden: Grafický návrh konverzní stránky a iterace na základě konzultace s klientem", submit:"Grafický návrh", pb:"doruceni"},
+  {n:45, task:"3. týden: Návrh a spuštění prvním Facebook reklam s rozpočtem 100-200 Kč denně.", submit:"Spuštěné reklamy", pb:"doruceni"},
+  {n:46, task:"4. týden: Optimalizace reklam a první A/B testy klíčových proměnných (nadpisy, obrázky...)", submit:"A/B testy", pb:"doruceni"},
+  {n:47, task:"5. týden: REPORT: Vyhodnocení prvních výsledků a návrh plánu na další měsíc", submit:"Report klientovi", pb:"doruceni"},
+  {n:48, task:"Volný den.", off:true},
+  {n:49, task:"Volný den. Gratulace, systém jede.", off:true},
  ]},
 ];
 
@@ -88,17 +77,78 @@ UPF.milestones = [
  {label:"Zákaznický výzkum", weeks:[0]},
  {label:"Trychtýř + vztahové video", weeks:[1]},
  {label:"Reklamy + e-maily", weeks:[2]},
- {label:"Optimalizace + rámovací hovory", weeks:[3,4]},
- {label:"Webinářový trychtýř", weeks:[5,6]},
- {label:"Doručení služby", weeks:[7]},
+ {label:"Optimalizace + rámovací hovory", weeks:[3]},
+ {label:"Prodej", weeks:[4]},
+ {label:"Doručení služby", weeks:[5,6]},
 ];
 
-/* ===================== SEKCE (mini-markdown) ===================== */
+/* odemykání kapitol: kapitola se odemkne po splnění všech pracovních dní <= unlockAfterDay */
+UPF.unlocks = { vyzkum:0, trychtyr:4, reklamy:13, prodej:21, doruceni:33, poznamky:0, zdroje:0 };
+
+/* ===================== SEKCE ===================== */
 UPF.sections = [
 
 {id:"vyzkum", ico:"🔎", nav:"Zákaznický výzkum", eyebrow:"První část · Jak získat zákazníky", title:"Zákaznický <span class=\"g\">výzkum</span>",
-lead:"Kapitola z členské sekce Nejlepšího Konverzkáře. Doslovné znění.",
-md:`> **Zákaznický výzkum:** čeká vás obvolání vašich potenciálních zákazníků. Výstupem bude alespoň 3x 20minutový audio záznam hloubkového rozhovoru s těmito lidmi a přepis nejdůležitějších citací.
+lead:"Krok 0: vyber si niku. Pak výzkum přesně podle systému Nejlepší agentury.",
+md:`## Krok 0: Vyber si niku
+> Vyber si **jednu** niku a u té zůstaň. Ideálně takovou, kde už někoho znáš, rozumíš jí, nebo tě baví. Čím vyšší hodnota zakázky, tím méně klientů potřebuješ.
+
+:::🟢 TIER 1 - HIGH TICKET (zakázka 100 000+ Kč)
+- Fotovoltaika a tepelná čerpadla
+- Stavební firmy - rekonstrukce na klíč, dřevostavby
+- Kuchyně a interiéry na míru, zimní zahrady, bazény
+- Okna, dveře, střechy, fasády
+- Developeři a realitní makléři
+- Architektonická studia
+- Zubní kliniky - implantáty, neviditelná rovnátka
+- Oční kliniky - laserové operace
+- Plastická chirurgie a estetické kliniky
+- Autosalony a dealeři motorek
+- Právní kanceláře (rozvody, firemní agenda)
+- Finanční, hypoteční a investiční poradci
+:::
+:::🟡 TIER 2 - MID TICKET (10 000 - 100 000 Kč)
+- Koučky, mentorky, konzultantky
+- Jazykové školy (firemní i individuální kurzy)
+- Osobní trenéři a výživoví poradci s programy
+- Estetická dermatologie a laserové kliniky
+- Svatební salony, agentury a fotografové
+- Veterinární kliniky (operace, dentální zákroky)
+- Car detailing - keramické vosky, fólie
+- Řemeslníci - koupelny, podlahy, elektro, topení
+- Hotely a penziony (svatby, firemní akce)
+- Cestovní kanceláře na míru
+- Golfová hřiště a sportovní akademie (členství)
+- Soukromé školky, doučování, kroužky
+:::
+:::🔴 TIER 3 - LOW TICKET (do 10 000 Kč)
+- Kadeřnictví a barbershopy
+- Kosmetika, nehty, řasy, permanentní make-up
+- Masáže, wellness, solária
+- Fyzioterapie - jednotlivá sezení
+- Posilovny - běžná členství
+- Restaurace, kavárny, cukrárny
+- Květinářství
+- Půjčovny šatů a obleků
+- Čistírny, opravny, krejčovství
+:::
+:::🔵 BONUS - Sociální sítě a online
+- Tvůrci online kurzů a členských sekcí
+- Osobní brandy a influenceři (monetizace publika)
+- E-shopy (výkonnostní marketing)
+- Podnikatelé, co chtějí správu sociálních sítí (reels, posty, UGC)
+- YouTube a podcast tvůrci
+- Lokální podniky bez sociálních sítí (kompletní rozjezd profilů)
+:::
+
+## Opener na první hovory
+> Zdravím, [oslovení], já jsem vás našel na webovejch stránkách, který si myslím, že jsou moc hezký.., nebo takhle, máte tam moc hezký fotky, na těch jste asi vy..
+> Já vám volám kvůli tomu, že jsem se vás chtěl zeptat.. Já jsem fascinovanej podnikateli, zejména [nika].. A zajímalo mě co odlišuje ty opravdu úspěšný [nika] od jinejch.
+Když se brání: **“A proč voláte?”** - “Ať jsem otevřenej, mě hrozně lidi zajímaj a chci se dozvědět od lidí, který jsou úspěšný, jak to dělaj.” Víc v kapitole **Moje poznámky**.
+
+---
+
+> **Zákaznický výzkum:** čeká vás obvolání vašich potenciálních zákazníků. Výstupem bude alespoň 3x 20minutový audio záznam hloubkového rozhovoru s těmito lidmi a přepis nejdůležitějších citací.
 
 ## První dětský krůček
 **ChatGPT výzkum:** než se pustíte do skutečného mluvení se skutečnými lidskými bytostmi, uděláte si první výzkum za pomocí A.I. Tento výzkum sice není plnohodnotná náhrada rozhovorů (uvidíte proč), ale to neznamená, že vám nepomůže. Zvlášť pokud s analýzou zákazníků začínáte poprvé v životě, dá vám toto cvičení dobrou představu, jak vaši lidé mluví, přemýšlí, co chtějí, co je bolí a co je trápí. První úkol je jednoduchý.
@@ -129,48 +179,88 @@ Navrhni mi na základě tohoto výzkumu 10 nadpisů pro e-mailový magnet, kter�
 - “Můžete mi to ještě trochu popsat? Zní to složitě.”
 - “Zajímavé, a toto ví/dokáží/dělají všichni majitelé zubních klinik?”
 
-> 🎬 **Demonstrace zákaznického výzkumu s příkladem rozboru** - video najdeš v členské sekci v kapitole Zákaznický výzkum.
-!btn [Otevřít členskou sekci](https://konverzka.cz/nejlepsi-konverzkar-13/)`},
+## Vojtovy resources
+- Kompletní otázkové banky, openery a námitky: kapitola **Moje poznámky**
+- [🎞️ Disk · REKLAMA WORKSHOP SCÉNÁŘE](https://drive.google.com/drive/folders/144pl5g4k2drhPZ-wEZDGLW5Jm-eWi4Ae)
+- [✉️ Šablona vztahových e-mailů](https://docs.google.com/document/d/13mBV2qUEGaCwwTgGjLNTOsJzqK7hNmGHNOPA2bXKpZg/edit)
+- [🛠️ Technika na natáčení reklam](https://docs.google.com/document/d/1ODTEHklvtiVC4V39iWfqflnIdkzy49T9fYXpHSEZicM/edit)`},
 
 {id:"trychtyr", ico:"🧲", nav:"První konverzní trychtýř", eyebrow:"První část · Jak získat zákazníky", title:"První konverzní <span class=\"g\">trychtýř</span>",
-lead:"Kapitola z členské sekce. Doslovné znění, kroky 1 až 5.",
+lead:"Konverzní stránku ti postaví Claude. Šablony máš jako inspiraci, prompty jsou připravené.",
 md:`Úkolem pro druhý týden bude...
 
 > ⚠️ **POZOR:** měli byste mít před začátkem tohoto úkolu vyplněnou tabulku s alespoň 10 kompletními záznamy z hovorů zákaznického výzkumu. Pokud se pustíte do tvorby trychtýře bez dobré znalosti cílové skupiny, je velmi pravděpodobné, že vám funnel nebude ideálně fungovat.
 
 ...tedy pustíme se do tvorby konverzního trychtýře pro získání vašich prvních zákazníků!
 
-## Krok č. 1
-Zkopírujte si šablonu Konverzky do svého účtu. Na výběr máte jednu ze dvou šablon **A,** Nejpoužívanější šablonu e-mailového magnetu (ta má často vyšší konverzní poměr) a **B,** estetickou variantu e-mailového magnetu (ta se naopak může líbit spíše zákazníkům, citlivým na design).
-- [Náhled nejpoužívanější šablony pro e-mailový magnet](https://3u3e6v5y.k01.konverzky.cz/?kct=f24fd153-906e-4419-85fb-1b5ca5b70e65)
-- [Náhled estetické šablony pro e-mailový magnet](https://dbjgfsbe.k01.konverzky.cz/?kct=f24fd153-906e-4419-85fb-1b5ca5b70e65)
+## Krok č. 1 · Konverzní stránka (postaví ti ji Claude)
+Nejdřív se podívej na inspiraci, ať víš, jak má výsledek vypadat:
+- [Inspirace: nejpoužívanější šablona e-mailového magnetu](https://3u3e6v5y.k01.konverzky.cz/?kct=f24fd153-906e-4419-85fb-1b5ca5b70e65) (ta má často vyšší konverzní poměr)
+- [Inspirace: estetická varianta e-mailového magnetu](https://dbjgfsbe.k01.konverzky.cz/?kct=f24fd153-906e-4419-85fb-1b5ca5b70e65) (ta se naopak může líbit spíše zákazníkům, citlivým na design)
+> 📱 **Důležité: stránku optimalizuj na telefon.** 80-90 % návštěvníků z reklam přijde z mobilu. Vždy si ji po vytvoření projdi na svém telefonu, než ji pošleš dál.
 
-## Krok č. 2
-Upravte si texty a grafiku Konverzky tak, aby vše sedělo pro vaší cílovou niku. Pro pomoc s texty můžete využít [Geňu](https://gena2.inizio.cz/) nebo [ChatGPT](https://chat.openai.com/). Pro tvorbu vizuálu (například mock-up e-booku) doporučuji použít nástroj [Canva](https://www.canva.com/create/ebook-covers/).
-Pokud s vizuálem chcete pomoct od nájemného grafika, za 5-20 EUR dostanete slušný výsledek na síti [Fiverr](https://www.fiverr.com/). Objednali jsme si zde již mnoho grafiky a videa. Náš současný full-time video-editor Dominik je dokonce člověk, kterého jsem na Fiverru objevil. Můžete zkusti hledat třeba “ebook cover design”.
-Skrze ChatGPT můžete zkusit prompt typu:
+Pak otevři Clauda, zkopíruj celý PROMPT 1, doplň [závorky] daty z výzkumu a nech si stránku vygenerovat:
+
+:::🤖 PROMPT 1 · Claude ti vytvoří konverzní stránku (zkopíruj celý)
 \`\`\`
-Vytvoř mi krásný realistický e-book - tedy cover knížečky, na které bude nadpis "Dnes jste měli prázdnou čekárnu naposledy." a grafická tématika je krása, vlasový salón a peníze.
+Vytvoř mi kompletní konverzní stránku (e-mailový magnet) jako JEDEN samostatný HTML soubor (index.html) v češtině. Jsem [tvoje jméno] a pomáhám nice: [tvoje nika]. Rozdávám zdarma e-book s názvem: "[titulek z výzkumu, šablona: Dnes jste X naposledy.]".
+
+STRUKTURA STRÁNKY (přesně v tomto pořadí, jako klasická stránka e-mailového magnetu):
+1. Úzká horní lišta s mým jménem/logem (text stačí).
+2. Velký nadpis = název e-booku. Pod ním podnadpis, který rozvádí, co čtenář získá (1 věta, jazykem zákazníka: [vlož 1-2 bolesti z výzkumu]).
+3. Vizuál e-booku (placeholder <img> s id="ebook-cover", ať ho můžu vyměnit za svůj obrázek).
+4. Formulář: pole Jméno, pole E-mail, velké tlačítko "Chci e-book zdarma". Pod tlačítkem drobný text o soukromí.
+5. Sekce "Co se v e-booku dozvíte" - 3 až 5 odrážek s benefity (použij tyto bolesti a sny z mého výzkumu: [vlož klíčové fráze, sny a bolesti]).
+6. Sekce "Kdo jsem já" - krátké představení + placeholder na moji fotku.
+7. Jednoduchá patička (jméno, e-mail, odkaz na zásady ochrany osobních údajů).
+
+TECHNICKÉ POŽADAVKY (důležité, nic nevynechej):
+- Mobile-first responzivní design. Na telefonu musí být nadpis čitelný, tlačítko velké na palec, žádný vodorovný scroll.
+- Rychlost: žádné externí knihovny, jen čisté HTML + CSS + malý JS. Systémová písma nebo max. 1 Google Font.
+- Barvy: [tvoje barvy, nebo napiš "zvol důvěryhodnou kombinaci s 1 výraznou akcentní barvou pro tlačítko"].
+- FACEBOOK PIXEL: do <head> vlož standardní Meta Pixel base kód s placeholderem 'VLOZ_PIXEL_ID' a PageView eventem.
+- LEAD EVENT + CONVERSIONS API PŘÍPRAVA: po odeslání formuláře vygeneruj unikátní event_id (např. 'lead_'+Date.now()+'_'+náhodné číslo), zavolej fbq('track','Lead',{},{eventID:event_id}) a POŠLI formulář fetchem (POST, JSON: jméno, e-mail, event_id, url stránky) na webhook s placeholderem 'VLOZ_MAKE_WEBHOOK_URL'. Stejné event_id pošli v obou - kvůli deduplikaci s Conversions API.
+- Po úspěšném odeslání plynule zobraz děkovací sekci (bez přesměrování): "Hotovo! E-book letí na váš e-mail." + prostor na děkovací video (placeholder <div id="dekovaci-video">).
+- Formulář validuj (e-mail formát, vyplněná pole), tlačítko po kliknutí zablokuj proti dvojkliku.
+- Vše piš česky, spisovně, ale lidsky. Žádný lorem ipsum - použij reálné texty z tohoto zadání.
+
+Vrať mi jeden kompletní index.html připravený k nasazení.
 \`\`\`
+:::
+
+:::🤖 PROMPT 2 · Claude/AI ti vytvoří cover e-booku
+\`\`\`
+Vytvoř mi krásný realistický e-book - tedy cover knížečky, na které bude nadpis "[tvůj titulek, např. Dnes jste měli prázdnou čekárnu naposledy.]" a grafická tématika je [tvoje nika, např. krása, vlasový salón a peníze].
+\`\`\`
+*(Vygenerovaný obrázek pak vlož do stránky místo placeholderu ebook-cover. Když se ti nelíbí, napiš: “Uprav to, ať to vypadá jako skutečná fotka knihy, měkké studiové světlo.”)*
+:::
+
+## Krok č. 2 · Měření: Facebook Pixel + Conversions API
+Tvoje stránka z PROMPTU 1 už má měření připravené v kódu. Zbývá ho napojit (10 minut):
+1. Jdi na [business.facebook.com/events_manager](https://business.facebook.com/events_manager2) → **Připojit data** → **Web** → pojmenuj Pixel (např. “Pixel [nika]”).
+2. Zkopíruj **Pixel ID** (15-16 číslic) a ve svém index.html nahraď text \`VLOZ_PIXEL_ID\` tímto číslem (je tam 2x). Tím ti jede **PageView** i **Lead** event.
+3. **Conversions API** (server-side měření, ať ti reklamy fungují i bez cookies): v Events Manageru → tvůj Pixel → **Nastavení** → sekce **Conversions API** → **Vygenerovat přístupový token**. Token si ulož.
+4. Založ zdarma účet na [make.com](https://www.make.com) a vytvoř scénář: **Webhooks → Custom webhook** (URL zkopíruj a v index.html nahraď \`VLOZ_MAKE_WEBHOOK_URL\`) → další modul **Facebook Conversions API → Send Event**: event_name \`Lead\`, event_id = pole \`event_id\` z webhooku, e-mail z formuláře, action_source \`website\`.
+5. Díky stejnému **event_id** z Pixelu i CAPI Facebook událost nezapočítá dvakrát (deduplikace).
+6. Zkontroluj v Events Manageru → záložka **Testovací události**: otevři svou stránku, odešli testovací formulář a sleduj, že přišel PageView i Lead (browser + server).
+> 💡 Bonus: do stejného Make scénáře přidej modul Google Sheets / e-mail, ať se ti každý lead rovnou ukládá a e-book odchází automaticky.
 
 ## Krok č. 3
 Připravte si scénář pro vaše “děkovací vztahové video”. Můžete využít šablonu, kterou jsem pro vás speciálně pro tento úkol připravil (vizte níže).
 Video následně natočte na vhodnou techniku. Dnes postačí skoro jakýkoliv mobilní telefon v ceně nad 10 000 Kč a stativ. Dbejte na to, aby scéna byla dobře nasvícená (denní světlo je ideální) a pozadí bylo zajímavé a relevantní pro vašeho zákazníka (pro hoteliéra třeba natáčejte na recepci, pro burzovního tradera před monitory s grafy, pro hospodského v kuchyni restaurace).
 > **Scéna videa je v prvních 2-10 sekundách pro úspěch videa důležitější než slova, která budete říkat.** A prvních 10 sekund videa bude rozhodovat o tom, zda jej do konce dokouká 20 a nebo 80 % návštěvníků.
-Hotové video nahrajte do programu Wistia.com a vložte do Konverzky.
+Hotové video vlož do děkovací sekce své konverzní stránky (placeholder dekovaci-video).
 
 ## Krok č. 4
-E-book nebo magnet ke stažení (jeho první minimalistická verze): obsah bude identický jako scénář vašeho děkovacího-vztahového videa, pouze půjde o textovou formu doplněnou o vizuály. I proto byste si na svém děkovacím-vztahovém scénáři měli dát záležet. Pro tvorbu e-booku opět můžete využít Canvu nebo Fiverr.
-Pokud se ptáte, zda obsah vztahového videa je vhodný pro užití do e-booku, podívejte se na to, co k užité stejného textu, který máte vy, napsal Nejlepší Konverzkář Honza Kováč a hlavně, co Honzovi odepsal po přečtení e-booku jeho odběratel.
+E-book nebo magnet ke stažení (jeho první minimalistická verze): obsah bude identický jako scénář vašeho děkovacího-vztahového videa, pouze půjde o textovou formu doplněnou o vizuály. I proto byste si na svém děkovacím-vztahovém scénáři měli dát záležet. Pro tvorbu e-booku můžete využít Canvu, nebo si ho nech vysázet od Clauda (řekni mu: “vytvoř mi z tohoto scénáře hezky formátovaný e-book jako HTML pro tisk do PDF”).
 
 ## Krok č. 5
 Připravte si prvních 5 vztahových e-mailů do vaší automatické e-mailové sekvence. Inspirovat se můžete scénářem/šablonou mailů, které jsem připravil.
 !btn [Šablona vztahových e-mailů](https://docs.google.com/document/d/13mBV2qUEGaCwwTgGjLNTOsJzqK7hNmGHNOPA2bXKpZg/edit)`},
 
 {id:"reklamy", ico:"🎬", nav:"Reklamy · KDO CO PROČ JAK", eyebrow:"Workshop reklam", title:"Jak na reklamu? <span class=\"g\">Kdo, Co, Proč, Jak?</span>",
-lead:"Framework + vzory doslovně (Google Disk: REKLAMA WORKSHOP SCÉNÁŘE).",
-md:`Dnes začneme prodávat Váš NOSNÝ PLÁN za pomocí jednoduchého videa, které se Honza naučil od nejlepších amerických podnikatelů.
-> 🎬 Podívejte se na Honzovo video + inspirace (příkladové video) + návod **5 KLÍČŮ K PŘESVĚDČIVÉMU VIDEU** - vše v členské sekci a na [Disku](https://drive.google.com/drive/folders/144pl5g4k2drhPZ-wEZDGLW5Jm-eWi4Ae).
+lead:"Framework + vzory doslovně (Disk: REKLAMA WORKSHOP SCÉNÁŘE).",
+md:`Dnes začneme prodávat Váš NOSNÝ PLÁN za pomocí jednoduchého videa, které se Vojta naučil od nejlepších amerických podnikatelů.
 
 ## FRAMEWORK REKLAMY
 ### UDIČKA
@@ -192,7 +282,7 @@ Jak to mohu dostat? Co mám udělat, abych to získal?
 
 > ⚠️ **Pozor:** finální reklamní video je třeba otitulkovat, pokud půjde na facebook. (vztahové video netřeba titulkovat)
 
-:::📝 Vzor · Kdo co proč jak základ (Honza Kováč)
+:::📝 Vzor · Kdo co proč jak základ
 Ahoj, já jsem Honza Kováč z programu Nejlepší finančník. A chtěl bych vám finanční poradcům dát dnes zdarma pětikrokový plán, jak můžete každý měsíc získat 7-11 nových klientů a díky tomu začít vydělávat i o 150 tisíc korun více na provizích. A ve skutečnosti je to mnohem jednodušší, než si myslíte, protože vašim potenciálním klientům prodáváte špatnou věc a zbytečně složitou věc. Jediné, co musíte udělat, je, abyste klikli na odkaz u tohoto videa a získali tento plán úplně zdarma. A proč to dělám? Protože já znám spoustu finančních poradců, kteří jsou strašně chytří, šikovní, pracují od rána do večera, ale nemají výsledky, se kterými by byli spokojeni. A není to kvůli tomu, že by byli špatní poradci, ale pouze prodávají špatný typ služby špatným zákazníkům. Pokud chcete získat můj pětikrokový plán, jak můžete začít jako finanční poradci okamžitě prosperovat, klikněte na odkaz u tohoto videa a na té stránce, kam se prokliknete, okamžitě získejte svůj plán, a to zcela zdarma.
 :::
 
@@ -256,22 +346,22 @@ Já jsem Honza Kováč, vystudovaný učitel a také fotograf a budu moc rád, p
 :::📝 MODELOVÁNÍ REKLAM · NEMANAHI
 Fáze jedna konverzní trichtýř. Fáze dva. A fáze tři: Zisk. Tohle je nejlepší marketingová nabídka v historii. Ahoj, já jsem Honza z Inizia. A příliš mnoho českých a slovenských podnikatelů nedokáže prosperovat, protože jim chybí předpovědětelný systém na získávání nových platících zákazníků. A víte co? Já vám to dneska dám jako dárek. Já vám dám ten systém. Já pro vás mám. Nemanahi, nejlepší marketingovou nabídku v historii. Proč to dělám? Já bych totiž upřímně chtěl, abyste vy vydělali peníze dřív, než vydělám peníze já. Tohle teď musíte udělat. Klikněte na tlačítko níže pod tímto videem a získejte svou Nemanahy, nejlepší marketingovou nabídku v historii. Dostanete 14 dní plného přístupu ke konverskám zdarma. To je nástroj, ve kterém si za pár minut naklikáte váš funkční konverzní trychtýř v hodnotě 997 Kč. Je doplněk nebo úplně nová cesta ve vašem podnikání? která z nedůvěřivých cizinců na internetu a zbloudilých klikačů a návštěvníků udělá vaše věrné a platící zákazníky. Věc, kterou jednou nastavíte a pak z ní můžete roky těžit nebo ji v budoucnu prodat jako fungující, vydělávající systém.
 Za druhé, kurz facebookové a instagramové reklamy pro rok 2025, abyste nemuseli dokola opakovat chyby mnoha specialistů a nemuseli postupovat systémem pokus omyl. Tenhle kurz v hodnotě 6 tisíc. 997 Kč. Za třetí, kurz prodeje pro rok 2025, abyste nemuseli nikoho přemlouvat, nikoho se doprošovat a dokonce ani s někým mluvit. Tahle úplná rovinka je v hodnotě 4997 Kč. Za čtvrté, kurz vydělávání na autopilota. Tohle zní trochu nadneseně, ale vysvětlím v něm, co je takzvaný setrvačník, který vám vydělává, i když spíte. Tohle je něco, co 92% podnikatelů nemá a díky tomu většina z nich stagnuje A neposouvá se ke svým cílům. Tenhle dosud neveřejný kurz je k nezaplacení. Na ten neumím jen tak plácnout cenovku. Tohle může mít opravdu obrovský dopad na podnikání šikovného jednotlivce nebo firmy. Za páté. Čeklist profitabilního podnikání, včetně našich vlastních biznisových zkratek. Tohle je know-how. podle kterého posuzují priority ve své práci. Tahle věc vám mimo jiné umožní spočítat si a maximalizovat vaši vlastní hodinovku. Protože ne všichni chceme pracovat 14 hodin denně. Svlášť, když většího efektu jde kolikrát dosáhnout za dvě hodiny. Hodnota téhle novinky je 997 Kč. Za šesté, milionářský plán pro hlavní podnikatelské obory. Jaké cesty zařadit, pokud už máte rozjeté podnikání, A co jsme naopak vyzkoušeli a byly to slepé uličky v hodnotě 1997 Kč. Za sedmé.
-Vybrané části našeho konverzního festivalu, kde jsme odhalili například to, jak v roce 2025 pracovat s umělou inteligencí, aby za vás dělala profesionální ziskový copywriting, design a navíc za vás stvořila reklamy. Nebo kde jsme odhalili, jak pracovat s náborem nových lidí do vašeho podnikání. Na festivalu hovořili takové hvězdy, jako například kouč Jaromíra Jágra Marian Jelínek. nebo prezident asociace vyjednavačů Radim Pařík. Tenhle záznam je v hodnotě 5997 Kč. Za osmé dostanete můj kurz Startovač, kde vás já vezmu za ruku a provedu vás s tvorbou vašeho prvního profitabilního konverzního trychtýře v hodnotě 1997 Kč. Za deváté dostanete přístup k živým konzultacím s Honzou, se mnou. Mně podnikatelé platí 10 000 Kč a členové naší Mastermind skupiny dokonce půl miliony Kč, aby se mnou mohli konzultovat. A vy tyto živé konzultace dostanete zdarma. Dvě. Za desáté. E-mailový autopilot na tržbu. To je nástroj, který za vás automaticky bude odesílat e-maily, i když jste na dovolené nebo si užíváte víkend na horách s rodinou. E-maily, které vám budou generovat poptávky nebo klidně rovnou zaplacené objednávky. V hodnotě 997 Kč.
+Vybrané části našeho konverzního festivalu, kde jsme odhalili například to, jak v roce 2025 pracovat s umělou inteligencí, aby za vás dělala profesionální ziskový copywriting, design a navíc za vás stvořila reklamy. Nebo kde jsme odhalili, jak pracovat s náborem nových lidí do vašeho podnikání. Na festivalu hovořili takové hvězdy, jako například kouč Jaromíra Jágra Marian Jelínek. nebo prezident asociace vyjednavačů Radim Pařík. Tenhle záznam je v hodnotě 5997 Kč. Za osmé dostanete můj kurz Startovač, kde vás já vezmu za ruku a provedu vás s tvorbou vašeho prvního profitabilního konverzního trychtýře v hodnotě 1997 Kč. Za deváté dostanete přístup k živým konzultacím. Mně podnikatelé platí 10 000 Kč a členové naší Mastermind skupiny dokonce půl miliony Kč, aby se mnou mohli konzultovat. A vy tyto živé konzultace dostanete zdarma. Dvě. Za desáté. E-mailový autopilot na tržbu. To je nástroj, který za vás automaticky bude odesílat e-maily, i když jste na dovolené nebo si užíváte víkend na horách s rodinou. E-maily, které vám budou generovat poptávky nebo klidně rovnou zaplacené objednávky. V hodnotě 997 Kč.
 Dostanete exkluzivní přístup do privátního fora hackerů konverzek, kde jsem já, kde jsou moji kolegové, marketingoví specialisté a také další motivovaní lidé, jako jste možná vy. Můžeme si tam povídat, můžeme si vyměňovat zkušenosti s našimi konverzními trichtíři a s naším biznisem v hodnotě 1997 Kč. Celková hodnota těchto produktů a služeb je 36 970 Kč. Ale pouze teď a právě teď Můžete tohle vše získat v rámci naší 14-denní testovací jízdy konverzek za pouhou 1 Kč. Musíte ale kliknout právě teď na tlačítko pod tímto videem, protože já vám nemůžu slíbit, že toto video ještě někdy uvidíte. Klikněte, než tohle video zakážou.
 :::
 
 ## Technika na natáčení reklam
-- Čtecí zařízení zde
+- Čtecí zařízení
 - Super světlo na reklamy i webináře
 - Výborné a levné mikrofony
-- Šablony zde
+- Šablony
 - KNIHOVNA REKLAM
 - Klipsna na světlo na monitor
 !btn [Dokument s odkazy na techniku](https://docs.google.com/document/d/1ODTEHklvtiVC4V39iWfqflnIdkzy49T9fYXpHSEZicM/edit)
 !btn [Celý Disk se scénáři](https://drive.google.com/drive/folders/144pl5g4k2drhPZ-wEZDGLW5Jm-eWi4Ae)`},
 
 {id:"prodej", ico:"📞", nav:"Prodejní hovor", eyebrow:"První část · Jak získat zákazníky", title:"Prodejní <span class=\"g\">hovor</span>",
-lead:"Kapitola z členské sekce + kompletní INIZIO scénář obchodního telefonátu. Doslovně.",
+lead:"Kompletní scénář obchodního telefonátu Nejlepší agentury. Doslovně.",
 md:`Úkolem pro třetí týden bude získat vašeho prvního zákazníka.
 Protože byste nyní měli mít připravený váš první trychtýř včetně děkovacího-vztahového video a rozhřívací e-mailové sekvence, je na řadě příjemná fáze:
 **Vydělat první peníze.**
@@ -279,33 +369,25 @@ Abychom mohli začít prodávat, budeme potřebovat nejprve dostat našeho poten
 
 ## Plán na tento týden 📅
 **Krok č. 1:** Nainstalujte si Calendly.com a vytvořte si rezervační Calendly formulář, aby si zákazníci mohli rezervovat termíny strategických (prodejních) konzultací s vámi
-**Krok č. 2:** Použijte můj scénář prodejního hovoru a upravte jej tak, abyste podle něj mohli postupovat a prodávat
+**Krok č. 2:** Použijte scénář prodejního hovoru níže a upravte jej tak, abyste podle něj mohli postupovat a prodávat
 **Krok č. 3:** Doplňte svůj Calendly odkaz do e-mailové sekvence.
-**Krok č. 4:** Spusťte reklamy na Facebooku podle mého vzoru a scénáře “Kdo, co, proč, jak?”
+**Krok č. 4:** Spusťte reklamy na Facebooku podle vzoru a scénáře “Kdo, co, proč, jak?”
 
 ### Krok č. 1: Calendly.com
-Ve svých firmách používám pro rezervaci obchodních konzultací vždy nástroj Calendly.com. Existují alternativy jako jsou systémy Pipedrive, Hubspot a další, ale s těmi vám případně nebudeme schopní poskytnout pomoc, protože je tak dobře neznáme.
-Calendly.com je v základní verzi pro jednoho uživatele zdarma a můžete si jej zaregistrovat na odkaze níže.
+Pro rezervaci obchodních konzultací používáme vždy nástroj Calendly.com. Existují alternativy jako jsou systémy Pipedrive, Hubspot a další, ale s těmi vám případně nebudeme schopní poskytnout pomoc, protože je tak dobře neznáme.
+Calendly.com je v základní verzi pro jednoho uživatele zdarma.
 !btn [Calendly.com](https://calendly.com)
 
 ### Krok č. 2: Scénář prodejního hovoru
-Brzy budete absolvovat první prodejní konzultaci. Abyste se mohli perfektně připravit, dávám vám k dispozici náš 20stránkový kompletní scénář prodejního hovoru, který jsem pro Vás speciálně upravil, aby vyhovoval dokonale prodeji služby Konverzního trychtýře s navazující péčí, která vám zajistí opakovaný příjem za servis a péči o Konverzku, kterou si od vás zákazník objedná.
 Doporučuji, abyste své první prodeje ocenili následujícím způsobem:
 - **Konverzní trychtýř na míru 24.990 Kč + DPH** (pokud jste plátci)
 - **Pravidelný servis a internetový marketing pro konverzní trychtýř 14.990 Kč + DPH měsíčně** (pozn.: servis spočívá v tom, že pro klienta tvoříte/spouštíte FB reklamy, aby do trychtýře proudili noví návštěvníci, dále děláte A/B testy a poskytuje marketingové poradenství - v praxi vám toto zabere 2-8 hodin měsíčně, protože pakliže vytvoříte funkční reklamu, trychtýř je ziskový a téměř bezúdržbový a zákazník vám rád platí za to, že má díky tomuto servisu jistotu, že “nevyschne” přítok nových leadů a objednávek)
 - **Garance vrácení peněz 30 dní** pokud z jakéhokoliv důvodu nebude zákazník spokojen
 - **Práce začíná v okamžiku, kdy zákazník uhradí první fakturu v plné výši.**
 
-### Krok č. 3: Doplňte svůj Calendly.com odkaz do e-mailů
-Skvělé, nyní jste připraveni přidat odkaz pro rezervaci strategické konzultace do e-mailové sekvence. Do toho.
-
-### Krok č. 4: Spusťte reklamu na svůj první konverzní trychtýř
-Možná jste mě již předběhli a reklamy jste si spustili dříve. Pokud ne, tak nyní je čas otestovat funkčnost vašeho prvního konverzního trychtýře skrze placenou reklamu.
-Doporučený formát reklamy je videoreklama (má násobně lepší výsledky/ziskovost než statická reklama) a nabízím vám její klasický scénář “Kdo, co, proč, jak?”, který možná již znáte z naší 30denní výzvy.
-
 ---
 
-# INIZIO: Scénář obchodního telefonátu
+# Scénář obchodního telefonátu
 
 ## Část 01 - Nezávazná konverzace
 - Dobrý den Evo *(použijte oslovení jménem, i když jde o ředitele)*, odkud dnes voláte?
@@ -373,7 +455,7 @@ Chcete, abych Vám řekl/a, co dělám?
 ## Část 12 - Doplňte nabídku o cenu s pobídkou urgence
 *Tato část přichází, až když se na ní zákazník ZEPTÁ.*
 Konverzní trychtýř vychází na jednorázově na 45 000 korun.
-Nicméně já mám zkušenost, že když narazím na lidi, kteří se umí rychle rozhodovat a skutečně vědí, co chtějí, bývají to naši nejlepší zákazníci. Já Vám to tedy [JMÉNO] nebudu nabízet za 59 000 Kč, ale pokud se rozhodnete nyní, že byste se toho chtěl účastnit, budu to pro Vás mít za 24 997 Kč. To už je včetně daně a měsíčních **členských poplatků za Konverzky, ty tedy celý rok platit** nebudete.
+Nicméně já mám zkušenost, že když narazím na lidi, kteří se umí rychle rozhodovat a skutečně vědí, co chtějí, bývají to naši nejlepší zákazníci. Já Vám to tedy [JMÉNO] nebudu nabízet za 59 000 Kč, ale pokud se rozhodnete nyní, že byste se toho chtěl účastnit, budu to pro Vás mít za 24 997 Kč.
 
 *Pak ztichněte.*
 **Toto TICHO je skutečně ta nejdůležitější část nabídky.**
@@ -390,7 +472,6 @@ Když jsou připraveni pokračovat, řekněte:
 - Na té stránce je formulář. Vidíte formulář? *(“ANO”)*
 - Tam zajdete své jméno. *(Vyčkejte a sledujte, zda zákazník píše. Pokud ne, dodejte “...Stačí křestní.” zákazník pochopí, že má začít vyplňovat rovnou.)*
 Většinou se dostanou sami na další krok platební brány a zaplatí.
-Když ne, řekněte, že má kliknout na tlačítko “Ano, chci VIP Konverzky teď.”
 
 ## S čím se nespokojíme?
 Jakékoliv vyjádření, které nezní **ANO** nebo **NE.** Pokud odpověď není binární, nesmíte se s ní spokojit.
@@ -424,12 +505,12 @@ Pokud váš zákazník ještě váhá, můžete použít tuto kouzelnou formulku
 > “Podívejte, ve skutečnosti Vaše ROZHODNUTÍ není o tom, zda s námi spolupracovat nebo ne.
 > Skutečné rozhodnutí je o tom, zda jste připraven/a k tomu se zavázat, že zlepšíte vaše obchodní výsledky nebo jestli chcete pokračovat stejně, jako doposud.”
 
-Zákazníci se ve skutečnosti nerozhodují o vás, tom zda chtějí INIZIO nebo ne. Oni se rozhodují, zda chtějí sami něco se sebou udělat.
+Zákazníci se ve skutečnosti nerozhodují o vás. Oni se rozhodují, zda chtějí sami něco se sebou udělat.
 
 ## Gratulace 🎉`},
 
 {id:"doruceni", ico:"🤝", nav:"Doručení služby", eyebrow:"Druhá část · Jak doručit službu", title:"Začátek spolupráce <span class=\"g\">a představení</span>",
-lead:"Kapitola z členské sekce. Doslovné znění, kroky 1 až 5.",
+lead:"Doslovné znění, kroky 1 až 5.",
 md:`Váš zákazník s vámi uzavřel spolupráci během prodejního hovoru. Nyní je potřeba udělat následující kroky.
 1. **Zaslat mu fakturu za vaše služby** (začínáte pracovat po jejím uhrazení, nikoliv po vystavení - toto je důležité pro kvalitu spolupráce a motivaci klienta optimálně spolupracovat)
 2. **Spolu s fakturou poslat k podpisu obchodní podmínky.** Spolupráce vašeho klienta k ničemu nezavazuje, tedy se zněním podmínek nebývá problém. Pokud by problém vznikl, je to varovné znamení, že klient možná bude problematický.
@@ -438,17 +519,16 @@ md:`Váš zákazník s vámi uzavřel spolupráci během prodejního hovoru. Nyn
 5. **Dáte klientovi plán.** Lidé milují plány a jízdní řády. Bez plánu vzniká úzkost a vy chcete, aby se s vámi zákazník cítil bezpečně. Pokud s vámi bude cítit úzkost, spíše o zakázku přijdete.
 
 ## 1. Faktura
-Fakturu můžete vystavit přes mnoho programů. Já vám mohu doporučit například program [FAPI.cz](https://fapi.cz), protože pokud jej budete platit, budete platit mně (hahahaha).
-Samozřejmě existují i další alternativy, které se v dalších letech pokusíme koupit nebo zlikvidovat. :-)
-Ohledně faktury: my první fakturu rovnou vystavujeme nikoliv jako zálohovou, ale jako fakturu “na ostro”. Zvýší vám to % platících, protože zálohová faktura je podvědomě považována za méně závaznou. Pokud Vám zákazník fakturu nezplatí (neplatič), je takovouto fakturu vždy možné zdobropisovoat, takže se nemusíte bát, že byste z ní zbytečně museli platit daň z příjmu nebo DPH.
+Fakturu můžete vystavit přes mnoho programů, například [FAPI.cz](https://fapi.cz) nebo [Fakturoid](https://www.fakturoid.cz).
+Ohledně faktury: první fakturu rovnou vystavujeme nikoliv jako zálohovou, ale jako fakturu “na ostro”. Zvýší vám to % platících, protože zálohová faktura je podvědomě považována za méně závaznou. Pokud Vám zákazník fakturu nezplatí (neplatič), je takovouto fakturu vždy možné zdobropisovoat, takže se nemusíte bát, že byste z ní zbytečně museli platit daň z příjmu nebo DPH.
 Během prodejního hovoru jste zákazníkovi oznámili, aby fakturu uhradil okamžitě. Pokud se tak nestalo, doporučuji urgovat okamžitě druhý den ráno a neodkládat. Rychlá urgence zvyšuje šance na rozplacení.
 
 ## 2. Obchodní podmínky
-Níže máte k dispozici vzory dokumentů, které můžete použít jako vaše vlastní obchodní podmínky a objednávky služeb. Stačí jen nahradit naší hlavičku vašimi nacionály.
-K podpisu obchodních podmínek můžete klienta vyzvat skrze scan podepsaného dokumentu a nebo to zákazníkovi (i sobě) usnadnit skrze elektronický podpis. My na INIZIU pro tyto účely používáme aplikaci [DigiSign](https://www.digisign.cz/). Stačí si vytvořit účet a organizaci. Poté vložíte naše vzory šablon (níže). Můžete si zvolit, jestli chcete nechat podepisovat pouze klienta nebo podepisujete klient i vy.
+Použijte vzory dokumentů jako vaše vlastní obchodní podmínky a objednávky služeb. Stačí jen nahradit hlavičku vašimi nacionály.
+K podpisu obchodních podmínek můžete klienta vyzvat skrze scan podepsaného dokumentu a nebo to zákazníkovi (i sobě) usnadnit skrze elektronický podpis, například aplikaci [DigiSign](https://www.digisign.cz/). Stačí si vytvořit účet a organizaci. Můžete si zvolit, jestli chcete nechat podepisovat pouze klienta nebo podepisujete klient i vy.
 
 ## 3. Představení
-**Příprava:** na první dojem nemůžete být nikdy “příliš” dobře oblečení. Doporučuji si pro první Zoom obléci vaše nejlepší business oblečení. Muži nic nezkazí i kravatou a dobře padnoucím sakem. Pokud nemáte dobře padnoucí sako (s moderním střihem), raději volte pouze samotnou bílou košili s dlouhým(!) rukávem. Ženám radit nebudu, ty se v oblečení vyznají. Mužům si ale dovolím doporučit, aby pro (nejen) byznysové potřeby disponovali alespoň jednou hezkou čistou bílou košilí, kterou si nechají ušít na míru. Není to drahé a udělá to velký efekt. Já “šiji” [zde (Le Premier)](https://www.lepremier.cz/kosile-na-miru), vy můžete také.
+**Příprava:** na první dojem nemůžete být nikdy “příliš” dobře oblečení. Doporučuji si pro první Zoom obléci vaše nejlepší business oblečení. Muži nic nezkazí i kravatou a dobře padnoucím sakem. Pokud nemáte dobře padnoucí sako (s moderním střihem), raději volte pouze samotnou bílou košili s dlouhým(!) rukávem. Ženám radit nebudu, ty se v oblečení vyznají.
 Werich zpíval, že šaty dělají člověka a je to pravda. Oblečení vám může kvalitní vztah buď podělat nebo udělat.
 Představení je nejdůležitější součást první komunikace. Chceme se ukázat v lidském a dobrém světle, aby si s námi zákazníky vybudoval pokud možno silný a (pozitivní) emocionální vztah.
 
@@ -474,24 +554,24 @@ Například pokud víte, že klient chce prodávat krabičku s japonským čajem
 
 ## 5. Dejte klientovi plán
 Plán vaší práce bude vypadat zhruba následujícím způsobem:
-- **1. týden:** Zákaznický výzkum a návrh konverzního trychtýře v PPT (dám vám šablonu, nebojte)
-- **2. týden:** Grafický návrh Konverzky (dám vám pěknou šablonu, nebojte) a iterace na základě konzultace s klientem
+- **1. týden:** Zákaznický výzkum a návrh konverzního trychtýře v PPT
+- **2. týden:** Grafický návrh konverzní stránky a iterace na základě konzultace s klientem
 - **3. týden:** Návrh a spuštění prvním Facebook reklam s rozpočtem 100-200 Kč denně.
 - **4. týden:** Optimalizace reklam a první A/B testy klíčových proměnných (nadpisy, obrázky...)
 - **5. týden:** REPORT: Vyhodnocení prvních výsledků a návrh plánu na další měsíc`},
 
-{id:"poznamky", ico:"📝", nav:"Moje poznámky", eyebrow:"Vojtovo know-how", title:"Moje <span class=\"g\">poznámky</span>",
-lead:"Vlastní openery, námitky, otázkové banky a poznámky z hovorů (Notion · Zákaznický výzkum).",
+{id:"poznamky", ico:"📝", nav:"Moje poznámky", eyebrow:"Know-how · Vojta Kopecký", title:"Moje <span class=\"g\">poznámky</span>",
+lead:"Vojtovy openery, námitky, otázkové banky a poznámky z reálných hovorů.",
 md:`## Opener
 > Zdravím, [oslovení], já jsem vás našel na webovejch stránkách, který si myslím, že jsou moc hezký.., nebo takhle, máte tam moc hezký fotky, na těch jste asi vy..
-> Já vám volám kvůli tomu, že jsem se vás chtěl zeptat.. Já jsem fascinovanej podnikateli, zejména kouči.. A zajímalo mě co odlišuje ty opravdu úspěšný kouče od jinejch.
+> Já vám volám kvůli tomu, že jsem se vás chtěl zeptat.. Já jsem fascinovanej podnikateli, zejména [nika].. A zajímalo mě co odlišuje ty opravdu úspěšný [nika] od jinejch.
 
 ## SMS
-> Zdravím, koukal jsem se na Váš web, prosím ozvěte se. Díky. Vojtěch Kopecký
+> Zdravím, koukal jsem se na Váš web, prosím ozvěte se. Díky. [Jméno Příjmení]
 
 ## Objections
-**“Co považujete za úspěšnýho kouče?”**
-Někomu, kdo pomáhá.. Má zákazníky, koho lidi poslouchají. A když máte zákazníky, jak si je takovej kouč [získává]...
+**“Co považujete za úspěšnýho [nika]?”**
+Někomu, kdo pomáhá.. Má zákazníky, koho lidi poslouchají.
 **“A proč voláte?”**
 Ať jsem otevřenej, moji klienti jsou podnikatelé, takže jednak jsem fascinovanej lidma, mě hrozně lidi zajímaj a chci se dozvědět od lidí který jsou úspěšný jak to dělaj, abych s nima byl schopnej mluvit jestli to dává smysl.
 **“Co za tím je?”**
@@ -500,7 +580,7 @@ Narovinu, já jim chci prodávat a když je poznám tak jim budu moct lépe pomo
 ## Questions (bloky výzkumného hovoru)
 ### BLOK 1 - Současná situace
 - Jak dnes vypadá tvůj typický pracovní týden?
-- Kolik času trávíte reálně koučováním a kolik nějakou administrativou kolem?
+- Kolik času trávíte reálně [hlavní činností] a kolik nějakou administrativou kolem?
 - Co máš na své práci nejradši?
 - Co tě na ní naopak nejvíc štve?
 - Kdyby ses mohl zbavit jedné věci, kterou dnes řešíš, co by to bylo?
@@ -538,37 +618,37 @@ Narovinu, já jim chci prodávat a když je poznám tak jim budu moct lépe pomo
 **BLOK 5 - Referenční bod:** Znáš nějakého trenéra, který zvládl přejít úspěšně online? Co konkrétně podle tebe udělal dobře? V čem je podle tebe jiný než většina trenérů? Myslíš si, že bys to dokázal taky? Proč ano nebo proč ne?
 :::
 
-:::❓ Otázky od Honzy Nedvěda
-- “Od koho jste si třeba přečetl knížku a šel koučovat?”
-- “V čem se liší kouči, jako jste vy, od všech ostatních koučů, podnikatelů?”
+:::❓ Otázky od Vojty Kopeckého
+- “Od koho jste si třeba přečetl knížku a šel [podnikat ve vaší nice]?”
+- “V čem se liší [nika], jako jste vy, od všech ostatních podnikatelů?”
 - “Proč jste vlastně podnikatel a ne jen zaměstnanec?”
 - “Jakou roli v tomto rozhodnutí a životě hraje rodina?”
-- “Jakou radu byste mi dal, kdybych se chtěl také stát koučem?”
+- “Jakou radu byste mi dal, kdybych se chtěl také stát [nika]?”
 - “Udělal byste něco zásadního dnes jinak, kdybyste začínal znovu?”
 - “Jak to myslíte?” (můžete takto nechat rozvinou jakoukoliv odpověď)
 - “Můžete mi to ještě trochu popsat? Zní to složitě.”
-- “Zajímavé, a toto ví/dokáží/dělají všichni kouči?”
+- “Zajímavé, a toto ví/dokáží/dělají všichni [nika]?”
 :::
 
 :::❓ Otázky od Adamovo formuláře
-- A jak to teď je, zaznámenávají koučky nárůst klientů nebo pokles?
+- A jak to teď je, zaznámenávají [nika] nárůst klientů nebo pokles?
 - A jak třeba nakládáte se svým časem, jak to je pro vás důležitý mít nějakou časovou svobodu?
 - A máte svoje kouče?
-- A kolik musí taková koučka investovat aby byla úspěšná?
+- A kolik musí taková [nika] investovat aby byla úspěšná?
 :::
 
 :::❓ Moje otázky
-- a co třeba musí koučové dělat aby získali klienty, když začínají?
+- a co třeba musí [nika] dělat aby získali klienty, když začínají?
 - a to neplatí teď, že vy už klienty máte?
-- a chtějí koučové získávat klienty nové nebo mají plno?
+- a chtějí [nika] získávat klienty nové nebo mají plno?
 - a jaké klienty byste chtěl získávat vy?
 :::
 
 ## Závěr hovoru + pitch
-> Děkuji vám moc za váš čas. Bylo to pro mě fakt hodnotný. Kdybych ještě já pro vás mohl bejt nějak užitečnej, tak já umím dobře marketing a pomáhám koučkám [CÍL].
+> Děkuji vám moc za váš čas. Bylo to pro mě fakt hodnotný. Kdybych ještě já pro vás mohl bejt nějak užitečnej, tak já umím dobře marketing a pomáhám [nika] [CÍL].
 > Chtěla byste se kouknout na to, jak prémiové klienty můžete přitahovat?
 
-> Já věřím, že se dokážete zbavit [BOLEST], moje specializace je, že pomáhám koučkám dostat se na [CÍL] a [CÍL], a na to dohlížím osobně, chtěla byste slyšet více o tom co dělám?
+> Já věřím, že se dokážete zbavit [BOLEST], moje specializace je, že pomáhám [nika] dostat se na [CÍL] a [CÍL], a na to dohlížím osobně, chtěla byste slyšet více o tom co dělám?
 
 **Rámovací otázka** *(říct před dalším krokem)*:
 > Chci, abyste věděla, že pokud zjistíme, že vám nemůžu pomoct, řeknu vám to. Rozumíte tomu?
@@ -582,57 +662,31 @@ Narovinu, já jim chci prodávat a když je poznám tak jim budu moct lépe pomo
 - ptám se otázku a dělám jí delší než je potřeba - ptám se moc, nezrcadlím
 - určitě bouchám do klávesnice moc dlouho → ta ozvěna je bouchání do klávesnice
 
-## Technika hovoru (z mých hovorů)
+## Technika hovoru (z reálných hovorů)
 - Když lidi necháš mluvit, budou mluvit o sobě rádi.
 - Neskákat do řeči. Nechat 3 sekundovou pauzu: když domluví a já už chci začít mluvit, řeknu si “nebudu mluvit, ještě 3 sekundy nechám”. Lidi se vždycky rozmluví, nechtějí, aby bylo ticho.
-- Za hodinu jsem položil tak 20 otázek, vždycky jednu větu. Ty lidi chtějí, aby je někdo vyslechl.
-
-## Věta do reklam
-> 💠 **Vy už nejste na začátku. a na své koučovací lekce nemusíte nikoho nahánět ani psát zprávy, aby k vám lidé přišli.**
-> Vidíte to sami. Ostatní koučky jsou zaměřeny na jednu úzkou věc, ale vy máte široký záběr a mnohem lépe lidem dokážete pomoct.
-> Ale potom klienti radši přijdou za nějakou koučkou, kterou vidí na Instagramu.
-> Sami se diagnostikují, ale vy víte, že to nemůže vyřešit ten problém, se kterým roky žijí. Protože za měsíc problém, se kterým roky žijete, nevyřešíte.
-> A tak k vám klienti stále přicházejí přes doporučení, a vám je to příjemné? Protože už jim nemusíte nic vysvětlovat a můžete jim rovnou pomáhat.`},
+- Za hodinu jsem položil tak 20 otázek, vždycky jednu větu. Ty lidi chtějí, aby je někdo vyslechl.`},
 
 {id:"zdroje", ico:"📚", nav:"Zdroje", eyebrow:"Materiály a odkazy", title:"Zdroje <span class=\"g\">a odkazy</span>",
-lead:"Členská sekce, šablony, Disk, technika a živá setkání na jednom místě.",
+lead:"Šablony, Disk, technika a nástroje na jednom místě.",
 md:`## Rychlé odkazy
-!btn [🎓 Členská sekce Nejlepší Konverzkář 13](https://konverzka.cz/nejlepsi-konverzkar-13/)
 !btn [🎞️ Disk · REKLAMA WORKSHOP SCÉNÁŘE](https://drive.google.com/drive/folders/144pl5g4k2drhPZ-wEZDGLW5Jm-eWi4Ae)
 !btn [✉️ Šablona vztahových e-mailů](https://docs.google.com/document/d/13mBV2qUEGaCwwTgGjLNTOsJzqK7hNmGHNOPA2bXKpZg/edit)
 !btn [🛠️ Technika na natáčení reklam](https://docs.google.com/document/d/1ODTEHklvtiVC4V39iWfqflnIdkzy49T9fYXpHSEZicM/edit)
-!btn [🧲 Šablona Konverzky · nejpoužívanější](https://3u3e6v5y.k01.konverzky.cz/?kct=f24fd153-906e-4419-85fb-1b5ca5b70e65)
-!btn [🎨 Šablona Konverzky · estetická](https://dbjgfsbe.k01.konverzky.cz/?kct=f24fd153-906e-4419-85fb-1b5ca5b70e65)
-!btn [🤖 Geňa (texty)](https://gena2.inizio.cz/)
+!btn [🧲 Inspirace: nejpoužívanější šablona konverzní stránky](https://3u3e6v5y.k01.konverzky.cz/?kct=f24fd153-906e-4419-85fb-1b5ca5b70e65)
+!btn [🎨 Inspirace: estetická šablona konverzní stránky](https://dbjgfsbe.k01.konverzky.cz/?kct=f24fd153-906e-4419-85fb-1b5ca5b70e65)
 !btn [📅 Calendly](https://calendly.com)
+!btn [📈 Facebook Events Manager (Pixel + CAPI)](https://business.facebook.com/events_manager2)
+!btn [⚙️ Make.com (Conversions API scénář)](https://www.make.com)
 
-## Obsah členské sekce
-**Úvod:** Úvodní video · Zoom konzultace s Honzou a Standou · Co vás čeká první týdny?
-**Živá setkání:** 1. živé setkání · 2. živé setkání · 3. živé setkání
-**První část (Jak získat zákazníky): Úkoly a šablony:** Zákaznický výzkum · První konverzní trychtýř · Prodejní hovor
-**Druhá část (Jak doručit službu):** Jak začít spolupráci (a udržet ji) · Poptávkový trychtýř (+ bonus: kvalifikační trychtýř) · NEMANAHI trychtýř · Webinářový trychtýř
-**Třetí část:** Jak udržet zákazníka na celý život
-**Něco navíc:** Audiokniha: První miliarda je nejtěžší · Mastermind dopisy · Bonusové grafické šablony
+## Nástroje, které používáme
+- **Claude** - staví konverzní stránky, e-booky a texty (prompty najdeš v kapitole První konverzní trychtýř)
+- **ChatGPT** - zákaznický výzkum a titulky (kapitola Zákaznický výzkum)
+- **Canva** - grafika a mockupy e-booku
+- **Calendly** - rezervace prodejních hovorů
+- **Make.com** - Conversions API + automatické odesílání e-booku
+- **Záznamník ve Windows / na Macu** - nahrávání výzkumných hovorů (při hlasitém odposlechu)
 
-## Živá setkání
-Vážení podnikatelští marketéři,
-rád bych vás pozval na květnovou živou akci, která odstartuje 90denní program “Nejlepší Konverzkář - třináctá generace”.
-Během tohoto setkání se naučíte… **“..jak prodávat, abyste se už nikdy v životě nemuseli bát o peníze?”** aneb systematická tvorba marketingově-prodejního vztahu, která poskytuje vyšší konkurenční výhodu než kvalita produktu, brand nebo dokonce cena.
-Níže naleznete potřebné informace pro Vaši přípravu k živé akci Nejlepší Konverzkář, která se bude konat **od 28. do 29. května 2026** v krásných Českých Budějovicích - tentokrát v centrále skupiny INIZIO na adrese: **F. A. Gerstnera 2151/6, 370 49 České Budějovice 7 (ve 2. patře).**
-Startujeme ve čtvrtek 8:45, kdy začíná výuka a oficiální program bude do 18:00. Ve čtvrtek večer Vás tentokrát po skončení programu pozvu na večeři a trochu kvalitního alkoholu od 19:00. V pátek bude program pokračovat od 9:00 do 16:00.
-Akce bude nahrávána, takže se k myšlenkám, které zazní, budete moci opakovaně tímto způsobem vracet. Program držíme ve velmi úzkém kruhu lidí. Bude tedy velký prostor pro intenzivní diskuzi a interakci s vašimi konkrétními postřehy.
-**Setkání se bude točit okolo 3 nosných témat:**
-1. Jak se tvoří kritické vstupní podmínky (vaše osobnost a vaše kultura · vaše nika · váš ideální zákazník · buďte nejlepší v ČR)
-2. Funnel pro zisk klientů
-3. A/B testování akvizice klientů
-**Další témata, která můžeme a nemusíme (všechna určitě nestihneme) plně probrat…**
-- Reklama na Facebooku a Instagramu v roce 2026
-- Workshop: váš efektivní kalendář
-- Doporučená četba
-**FAQ: Příprava: potřebuji něco pro výuku?** Pouze čerstvý mozek a vaši plnou pozornost. Během výuky bude k dispozici káva a občerstvení a wifi.
-**Pro rekapitulaci, živé akce se budou konat v těchto termínech:** 3 živá setkání v Českých Budějovicích
-- 28.- 29. 5. 2026 Jak prodávat, abyste se už nikdy v životě nemuseli bát o peníze?
-- (bude doplněno) Jak získat neomezené množství zákazníků?
-- (bude doplněno) Jak si zákazníky udržet na celý život?
-+ navíc čtvrté živé setkání a slavnostní ceremoniální předání certifikátů - bude upřesněno.`},
+## Jak odevzdávat úkoly
+Každý večer pošli splněný úkol dne **do WhatsAppu** - přesně to, co je u dne uvedeno v poli “Předložíte”. Když se zasekneš, napiš hned, ne až večer.`},
 ];

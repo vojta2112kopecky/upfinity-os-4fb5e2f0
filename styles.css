@@ -49,7 +49,8 @@ a:hover{text-decoration:underline}
 .topbar{display:none;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line2);padding:10px 16px;align-items:center;gap:12px}
 .topbar img{width:30px;height:30px}
 .topbar .t{font-family:var(--disp);font-weight:800;font-size:16px;color:var(--black)}
-.topbar .burger{margin-left:auto;background:none;border:1px solid var(--line);border-radius:10px;width:38px;height:38px;font-size:17px;cursor:pointer;color:var(--ink)}
+.topbar .burger{background:none;border:1px solid var(--line);border-radius:10px;width:38px;height:38px;font-size:17px;cursor:pointer;color:var(--ink);flex:0 0 auto}
+.topbar .logo-egg{cursor:pointer}
 
 /* ===== Main ===== */
 .main{margin-left:var(--sb);min-height:100vh}
@@ -166,3 +167,73 @@ th{font-family:var(--disp);font-weight:700;background:var(--panel2);font-size:12
 }
 .scrim{display:none;position:fixed;inset:0;background:rgba(10,10,11,.35);z-index:35}
 .scrim.on{display:block}
+
+/* ===== shimmer progress bar (Fáze programu) ===== */
+.progwrap{background:var(--panel);border:1px solid var(--line2);border-radius:20px;padding:20px 22px;box-shadow:var(--shadow);margin:22px 0}
+.progwrap-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.progpct{font-size:13px;color:var(--mut)}.progpct b{color:var(--purple);font-size:18px;font-variant-numeric:tabular-nums}
+.shimmer-bar{height:16px;border-radius:100px;background:var(--panel2);overflow:hidden;position:relative;box-shadow:inset 0 1px 3px rgba(10,10,11,.08)}
+.shimmer-bar i{display:block;height:100%;border-radius:100px;background:var(--grad);position:relative;overflow:hidden;transition:width .6s cubic-bezier(.22,1,.36,1);min-width:16px}
+.shimmer-bar i::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.18) 0 10px,rgba(255,255,255,0) 10px 22px);animation:barstripes 1s linear infinite}
+@keyframes barstripes{to{background-position:31px 0}}
+.shimmer-bar .shine{position:absolute;top:0;left:0;height:100%;width:44%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.75),rgba(255,255,255,0));filter:blur(2px);animation:shine 2.1s ease-in-out infinite}
+@keyframes shine{0%{transform:translateX(-140%)}55%,100%{transform:translateX(320%)}}
+@media (prefers-reduced-motion:reduce){.shimmer-bar i::after,.shimmer-bar .shine{animation:none}}
+
+/* ===== prompt s tlačítkem ===== */
+.prompt{background:#131019;color:#f2eef8;border:1px solid #2a2337;border-radius:16px;padding:16px 18px;margin:14px 0;position:relative}
+.prompt::before{content:"PROMPT · doplň [závorky] a vlož Claudovi";font-family:var(--disp);font-weight:700;font-size:10px;letter-spacing:.12em;color:#b79df1;display:block;margin-bottom:10px}
+.prompt pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:'Schibsted Grotesk',ui-monospace,monospace;font-size:13.5px;line-height:1.55;color:#efe9f6}
+.prompt-copy{position:absolute;top:12px;right:12px;background:var(--grad);color:#fff;border:none;border-radius:100px;font-family:var(--disp);font-weight:700;font-size:11px;padding:6px 13px;cursor:pointer;box-shadow:var(--shadow-p)}
+.prompt-copy:hover{filter:brightness(1.08)}
+
+/* ===== zamčené kapitoly ===== */
+.sb-link.locked{color:var(--mut2);opacity:.75}
+.sb-link.locked .ico{filter:grayscale(1)}
+.sb-link .lk{margin-left:auto;font-size:12px;opacity:.7}
+.locked-card{display:flex;gap:16px;align-items:center;background:var(--panel);border:1px dashed rgba(145,0,253,.35);border-radius:20px;padding:26px 24px;box-shadow:var(--shadow);margin-top:20px}
+.locked-card .lock-ic{font-size:38px;flex:0 0 auto}
+.locked-card b{font-family:var(--disp);font-size:18px;color:var(--black);display:block;margin-bottom:4px}
+.locked-card p{color:var(--mut);margin:0 0 12px}
+
+/* ===== den: datum + flash ===== */
+.day .num{display:flex;flex-direction:column;align-items:flex-start;gap:3px;line-height:1.05}
+.day .num .date{font-size:10.5px;font-weight:600;color:var(--mut2);text-transform:none;letter-spacing:0}
+.day.done .num .date{color:var(--ok)}
+.day.flash{animation:dayflash 1.6s ease}
+@keyframes dayflash{0%,100%{box-shadow:var(--shadow)}25%,60%{box-shadow:0 0 0 3px rgba(145,0,253,.5),0 14px 40px rgba(145,0,253,.28)}}
+
+/* ===== EASTER EGG: Mercedes-AMG CLA 45 S burnout ===== */
+#car-egg{position:fixed;inset:0;z-index:99999;pointer-events:none;overflow:hidden}
+#car-egg .car-rig{position:absolute;top:52%;left:0;width:min(560px,74vw);transform:translate(-130%,-50%);
+  animation:carRun 3s cubic-bezier(.7,0,.35,1) forwards}
+#car-egg .car-img{width:100%;height:auto;display:block;filter:drop-shadow(0 24px 30px rgba(0,0,0,.45))}
+#car-egg .car-rig{will-change:transform}
+@keyframes carRun{
+  0%{transform:translate(-130%,-50%)}
+  16%{transform:translate(6%,-50%)}                 /* dojede a stojí = burnout */
+  20%{transform:translate(6%,-50%) rotate(0deg)}
+  22%{transform:translate(5.4%,-50%)}
+  24%{transform:translate(6.4%,-50%)}               /* jemné cukání při burnoutu */
+  26%{transform:translate(5.6%,-50%)}
+  50%{transform:translate(7%,-50%)}
+  56%{transform:translate(6%,-50%)}
+  100%{transform:translate(150%,-50%)}              /* vystřelí pryč doprava */
+}
+/* kouř z rozpálených zadních kol (rear = levá strana fotky, ~16 %) */
+#car-egg .smoke{position:absolute;left:15%;top:70%;width:80px;height:80px;border-radius:50%;
+  background:radial-gradient(circle,rgba(244,244,248,.95),rgba(222,222,230,.55) 45%,rgba(222,222,230,0) 72%);
+  opacity:0;filter:blur(4px);will-change:transform,opacity}
+#car-egg .smoke.s1{animation:puff 1.5s .5s ease-out infinite}
+#car-egg .smoke.s2{left:19%;animation:puff 1.7s .72s ease-out infinite}
+#car-egg .smoke.s3{left:12%;animation:puff 1.55s .94s ease-out infinite}
+#car-egg .smoke.s4{left:17%;animation:puff 1.8s 1.16s ease-out infinite}
+#car-egg .smoke.s5{left:14%;animation:puff 1.6s 1.38s ease-out infinite}
+#car-egg .smoke.s6{left:20%;animation:puff 1.7s 1.6s ease-out infinite}
+@keyframes puff{0%{opacity:0;transform:translate(0,0) scale(.35)}18%{opacity:.9}100%{opacity:0;transform:translate(-300px,-95px) scale(3.8)}}
+/* stopa po pneumatice pod autem */
+#car-egg .skid{position:absolute;left:0;top:calc(52% + 4.2vw);height:8px;width:0;
+  background:linear-gradient(90deg,rgba(18,18,20,0),rgba(18,18,20,.5) 30%,rgba(18,18,20,.55));border-radius:5px;filter:blur(.5px);
+  animation:skid 3s cubic-bezier(.7,0,.35,1) forwards}
+@keyframes skid{0%,16%{width:0;opacity:.6}17%{width:22%}55%{width:62%}100%{width:120%;opacity:0}}
+@media (prefers-reduced-motion:reduce){#car-egg{display:none}}
