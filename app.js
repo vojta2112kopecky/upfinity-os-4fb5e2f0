@@ -89,7 +89,7 @@ function renderPrehled(){
    +"<p class=\"lead\">Kompletní know-how, tvoje poznámky a každodenní plán. Vlevo panel, tady výsledky. Materiály se odemykají, jak plníš týdny.</p>"
    +"</div><img class=\"hero-mark\" src=\"assets/mark.svg\" alt=\"Upfinity\"></div>"
    +"<div class=\"progwrap reveal\"><div class=\"progwrap-top\"><span class=\"eyebrow\" style=\"margin:0\">Fáze programu</span><span class=\"progpct\"><b id=\"ov-pct\">"+s.pct+"</b>% · "+s.done+"/"+s.total+" dní</span></div>"
-   +"<div class=\"shimmer-bar\"><i id=\"ov-fill\" style=\"width:"+s.pct+"%\"><span class=\"shine\"></span></i></div>"
+   +"<div class=\"shimmer-bar\"><i id=\"ov-fill\" style=\"clip-path:inset(0 "+(100-s.pct)+"% 0 0 round 100px)\"><span class=\"shine\"></span></i></div>"
    +"<div class=\"miles\">"+miles+"</div></div>"
    +today
    +"<h2 class=\"reveal\">Rychlá navigace</h2><div class=\"quick reveal\">"
@@ -183,7 +183,7 @@ function refreshCounts(){
   var c=$("#sb-count");if(c)c.textContent=s.done+"/"+s.total;
   var bar=$("#sb-bar i");if(bar)bar.style.transform="scaleX("+(s.pct/100)+")";
   var lb=$("#sb-pct");if(lb)lb.textContent=s.pct+"%";
-  var ov=$("#ov-fill");if(ov)ov.style.width=s.pct+"%";
+  var ov=$("#ov-fill");if(ov)ov.style.clipPath="inset(0 "+(100-s.pct)+"% 0 0 round 100px)";
   var ovp=$("#ov-pct");if(ovp)ovp.textContent=s.pct;
   $$(".week-head .cnt").forEach(function(el){
     var wi=+el.dataset.week,days=UPF.plan[wi].days.filter(function(d){return !d.off;});
