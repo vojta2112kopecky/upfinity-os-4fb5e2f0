@@ -59,7 +59,9 @@ function dayDate(n){
   return dow+" "+base.getDate()+". "+(base.getMonth()+1)+".";
 }
 
+var URLUNLOCK=(function(){try{var v=(new URLSearchParams(location.search)).get("unlock")||"";return v.split(",").map(function(s){return s.trim().toLowerCase();}).filter(Boolean);}catch(e){return [];}})();
 function sectionUnlocked(id){
+  if(URLUNLOCK.indexOf("all")>=0||URLUNLOCK.indexOf(id)>=0)return true;
   var after=UPF.unlocks[id];
   if(after===undefined||after===0)return true;
   var need=workDays().filter(function(d){return d.n<=after;});
