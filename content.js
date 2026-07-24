@@ -144,7 +144,98 @@ md:`## Krok 0: Vyber si niku
 ## Opener na první hovory
 > Zdravím, [oslovení], já jsem vás našel na webovejch stránkách, který si myslím, že jsou moc hezký.., nebo takhle, máte tam moc hezký fotky, na těch jste asi vy..
 > Já vám volám kvůli tomu, že jsem se vás chtěl zeptat.. Já jsem fascinovanej podnikateli, zejména [nika].. A zajímalo mě co odlišuje ty opravdu úspěšný [nika] od jinejch.
-Když se brání: **“A proč voláte?”** - “Ať jsem otevřenej, mě hrozně lidi zajímaj a chci se dozvědět od lidí, který jsou úspěšný, jak to dělaj.” Víc v kapitole **Moje poznámky**.
+
+!hl 🔴 Nahrávejte si **KAŽDÝ** hovor na počítač (Windows „Záznamník“, Mac „Voice Memos“; telefon dejte na hlasitý odposlech). Nahrávky si spolu pustíme a projdeme, co příště zlepšit.
+
+## Odpovědi na námitky (hlavní)
+**“Co považujete za úspěšnýho [nika]?”**
+Někomu, kdo pomáhá.. Má zákazníky, koho lidi poslouchají.
+**“A proč voláte?”**
+Ať jsem otevřenej, moji klienti jsou podnikatelé, takže jednak jsem fascinovanej lidma, mě hrozně lidi zajímaj a chci se dozvědět od lidí který jsou úspěšný jak to dělaj, abych s nima byl schopnej mluvit jestli to dává smysl.
+**“Co za tím je?”**
+Narovinu, já jim chci prodávat a když je poznám tak jim budu moct lépe pomoct.
+
+## SMS (když to nezvednou)
+> Zdravím, koukal jsem se na Váš web, prosím ozvěte se. Díky. [Jméno Příjmení]
+
+## Otázky do hovoru — moje rozřízení
+### BLOK 1 - Současná situace
+- Jak dnes vypadá tvůj typický pracovní týden?
+- Kolik času trávíte reálně [hlavní činností] a kolik nějakou administrativou kolem?
+- Co máš na své práci nejradši?
+- Co tě na ní naopak nejvíc štve?
+- Kdyby ses mohl zbavit jedné věci, kterou dnes řešíš, co by to bylo?
+### BLOK 2 - High Ticket Programy
+- Napadlo tě někdy přejít víc do High Ticket programů?
+- Co tě na tom láká?
+- Měla jste někdy High Ticket program?
+- Jaká byla vaše zkušenost?
+- A proč dnes pochází většina Vašeho příjmu z konzultací?
+- Co Vás drží v současném modelu?
+### BLOK 3 - Motivace
+- Představte si, že za 2 roky budete mít příjem hlavně z High Ticket programu.
+- Co je ve vašem životě jinak?
+- Co by pro tebe bylo největší plus?
+- Jak by vypadal ideální pracovní týden?
+- Co bys dělal s časem navíc?
+### BLOK 4 - Strachy a překážky
+- Co tě nejvíc odrazuje od většího přechodu do High Ticket nabídek?
+- Čeho by ses bál nejvíc?
+- Co si myslíš, že by pro tebe bylo nejtěžší?
+- Kde by ses nejspíš zasekl?
+- Co by se muselo stát, abys řekl: “Tak jo, teď do toho fakt jdu.”
+### BLOK 5 - Referenční bod
+- Znáš nějakou koučku, která zvládla přejít úspěšně online?
+- Co konkrétně podle tebe udělala dobře?
+- V čem je podle vás jiná než většina kouček?
+- Myslíte si, že bys to dokázal taky?
+- Proč ano nebo proč ne?
+
+:::❓ Otázky od Ondry Holoubka (rovnou pak prodává)
+**BLOK 1 - Současná situace:** Jak dlouho už děláš trenéra? Jak dnes vypadá tvůj typický pracovní týden? Kolik hodin týdně reálně trávíš v gymu? Co máš na své práci nejradši? Co tě na ní naopak nejvíc štve? Kdyby ses mohl zbavit jedné věci, kterou dnes řešíš, co by to bylo?
+**BLOK 2 - Online coaching:** Napadlo tě někdy přejít víc do online coachingu? Co tě na tom láká? Měl jsi někdy online klienty? Jaká byla tvoje zkušenost? Proč dnes stále většina tvého příjmu pochází z osobek? Co tě drží v současném modelu?
+**BLOK 3 - Motivace:** Představ si, že je za dva roky a většinu příjmu máš z online coachingu. Co je v tvém životě jinak? Co by pro tebe bylo největší plus? Jak by vypadal ideální pracovní týden? Co bys dělal s časem navíc?
+**BLOK 4 - Strachy a překážky:** Co tě nejvíc odrazuje od většího přechodu online? Čeho by ses bál nejvíc? Co si myslíš, že by pro tebe bylo nejtěžší? Kde by ses nejspíš zasekl? Co by se muselo stát, abys řekl: “Tak jo, teď do toho fakt jdu.”
+**BLOK 5 - Referenční bod:** Znáš nějakého trenéra, který zvládl přejít úspěšně online? Co konkrétně podle tebe udělal dobře? V čem je podle tebe jiný než většina trenérů? Myslíš si, že bys to dokázal taky? Proč ano nebo proč ne?
+:::
+
+:::❓ Otázky od Vojty Kopeckého
+- “Od koho jste si třeba přečetl knížku a šel [podnikat ve vaší nice]?”
+- “V čem se liší [nika], jako jste vy, od všech ostatních podnikatelů?”
+- “Proč jste vlastně podnikatel a ne jen zaměstnanec?”
+- “Jakou roli v tomto rozhodnutí a životě hraje rodina?”
+- “Jakou radu byste mi dal, kdybych se chtěl také stát [nika]?”
+- “Udělal byste něco zásadního dnes jinak, kdybyste začínal znovu?”
+- “Jak to myslíte?” (můžete takto nechat rozvinou jakoukoliv odpověď)
+- “Můžete mi to ještě trochu popsat? Zní to složitě.”
+- “Zajímavé, a toto ví/dokáží/dělají všichni [nika]?”
+:::
+
+:::❓ Otázky od Adamovo formuláře
+- A jak to teď je, zaznámenávají [nika] nárůst klientů nebo pokles?
+- A jak třeba nakládáte se svým časem, jak to je pro vás důležitý mít nějakou časovou svobodu?
+- A máte svoje kouče?
+- A kolik musí taková [nika] investovat aby byla úspěšná?
+:::
+
+:::❓ Moje otázky
+- a co třeba musí [nika] dělat aby získali klienty, když začínají?
+- a to neplatí teď, že vy už klienty máte?
+- a chtějí [nika] získávat klienty nové nebo mají plno?
+- a jaké klienty byste chtěl získávat vy?
+:::
+
+## Závěr hovoru + jemný pitch
+> Děkuji vám moc za váš čas. Bylo to pro mě fakt hodnotný. Kdybych ještě já pro vás mohl bejt nějak užitečnej, tak já umím dobře marketing a pomáhám [nika] [CÍL].
+> Chtěla byste se kouknout na to, jak prémiové klienty můžete přitahovat?
+
+> Já věřím, že se dokážete zbavit [BOLEST], moje specializace je, že pomáhám [nika] dostat se na [CÍL] a [CÍL], a na to dohlížím osobně, chtěla byste slyšet více o tom co dělám?
+
+**Rámovací otázka** *(říct před dalším krokem)*:
+> Chci, abyste věděla, že pokud zjistíme, že vám nemůžu pomoct, řeknu vám to. Rozumíte tomu?
+
+**Další krok:**
+> Další krok je, že si domluvíme 45 minutový nezávazný strategický hovor zdarma, já se na něj připravím, vy také a během něj zkusíme zjistit, co je třeba udělat, abyste dosáhla výsledku [CÍL]. Hodí se vám to zítra v 17 hodin?
 
 ---
 

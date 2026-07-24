@@ -26,6 +26,7 @@ function md(src){
       out.push("<div class=\"prompt\"><button class=\"prompt-copy\" type=\"button\">Kopírovat</button><pre>"+pb.join("\n")+"</pre></div>");continue;}
     if(/^!btn /.test(ln)){var m=ln.slice(5).match(/\[([^\]]+)\]\(([^)]+)\)/);
       if(m)out.push("<a class=\"btn primary\" href=\""+m[2]+"\" target=\"_blank\" rel=\"noopener\">"+esc(m[1])+"</a> ");i++;continue;}
+    if(/^!hl /.test(ln)){out.push("<div class=\"hl\">"+inline(ln.slice(4))+"</div>");i++;continue;}
     if(/^---\s*$/.test(ln)){out.push("<hr>");i++;continue;}
     if(/^#### /.test(ln)){out.push("<h4>"+inline(ln.slice(5))+"</h4>");i++;continue;}
     if(/^### /.test(ln)){out.push("<h3>"+inline(ln.slice(4))+"</h3>");i++;continue;}
