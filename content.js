@@ -1,82 +1,100 @@
 /* Upfinity OS · obsah. HARD RULE: know-how texty DOSLOVNĚ (Vojta Kopecký / Nejlepší agentura). */
 window.UPF = {};
 
-/* ===================== PLÁN (hromadné bloky, bez dat a dnů) ===================== */
-UPF.planIntro = "Změňte svůj příběh: Přestaňte si říkat “To nemůžu.” a začněte si říkat “To můžu.”\nPoužijte bolest a potěšení: Bolest je lenost a vykroucení se, slast je splněný úkol.\nŽádné datumy. Postupujte blok po bloku svým tempem – hotový úkol odškrtněte a pošlete do WhatsAppu.";
+/* ===================== PLÁN (hromadné bloky, role Hanuš / Alex) ===================== */
+UPF.planIntro = "Změňte svůj příběh: Přestaňte si říkat “To nemůžu.” a začněte si říkat “To můžu.”\nPoužijte bolest a potěšení: Bolest je lenost a vykroucení se, slast je splněný úkol.\nVýzkum máte za sebou. Teď do konce týdne vykopnout funnel – každý úkol má svého člověka, ať se nečeká na nikoho zbytečně.";
+
+UPF.owners = {
+ H:{name:"Hanuš", ico:"🎤", role:"copy · scénáře · natáčení (tvář)"},
+ A:{name:"Alex", ico:"🔧", role:"e-booky · technika · napojení"},
+ HA:{name:"Spolu", ico:"🤝", role:"kontrola a start"}
+};
 
 UPF.blocks = [
- {id:"b1", ico:"🔎", name:"Blok 1 · Nika a zákaznický výzkum", sub:"Základ všeho. Bez něj funnel nefunguje.", tasks:[
-  {id:"t1", task:"Vyberte si niku ze seznamu v kapitole Zákaznický výzkum a proveďte 5 výzkumných hovorů na vaši niku.\nOpener: “Dobrý den, [jméno], já jsem vás našel na webových stránkách, který si myslím, že jsou moc hezký.., nebo takhle, máte tam moc hezký fotky, na těch jste asi vy..” (celý opener v kapitole Zákaznický výzkum)", submit:"Vybraná nika + 5 nahraných hovorů do WhatsAppu", pb:"vyzkum"},
-  {id:"t2", task:"20x hloubkový 20minutový rozhovor s lidmi z vaší niky.\n(Klidně po částech – 10 rozhovorů, pak dalších 10. Nahrávejte si je.)", submit:"Klíčová slova, klíčové fráze, sny a bolesti do WhatsAppu", pb:"vyzkum"},
-  {id:"t3", task:"Prostudujte si kapitolu “Zákaznický výzkum”. Podle zadání proveďte výzkum skrze ChatGPT a vytvořte dle zadání také první titulky.", submit:"Titulky do WhatsAppu", pb:"vyzkum"},
+ {id:"b1", ico:"✅", name:"Blok 1 · Nika a zákaznický výzkum", sub:"Hotovo – máte za sebou. Odškrtněte a jedeme dál.", tasks:[
+  {id:"t1", owner:"HA", task:"Vyberte si niku ze seznamu v kapitole Zákaznický výzkum a proveďte 5 výzkumných hovorů na vaši niku.\nOpener: “Dobrý den, [jméno], já jsem vás našel na webových stránkách, který si myslím, že jsou moc hezký.., nebo takhle, máte tam moc hezký fotky, na těch jste asi vy..” (celý opener v kapitole Zákaznický výzkum)", submit:"Vybraná nika + 5 nahraných hovorů do WhatsAppu", pb:"vyzkum"},
+  {id:"t2", owner:"HA", task:"20x hloubkový 20minutový rozhovor s lidmi z vaší niky.", submit:"Klíčová slova, klíčové fráze, sny a bolesti do WhatsAppu", pb:"vyzkum"},
+  {id:"t3", owner:"HA", task:"Prostudujte si kapitolu “Zákaznický výzkum”. Podle zadání proveďte výzkum skrze ChatGPT a vytvořte dle zadání také první titulky.", submit:"Titulky do WhatsAppu", pb:"vyzkum"},
  ]},
 
- {id:"b2", ico:"🧲", name:"Blok 2 · Konverzní stránka", sub:"Claude vám ji postaví. Vy dodáte texty z výzkumu.", tasks:[
-  {id:"t4", task:"Prostudujte si kapitolu “První konverzní trychtýř”. Pomocí PROMPTU 1 z kapitoly si nechte od Clauda vytvořit svou konverzní stránku (včetně Facebook Pixelu a Conversions API) a vložte do ní jeden titulek z výzkumu.", submit:"Odkaz na konverzní stránku do WhatsAppu", pb:"trychtyr"},
-  {id:"t5", task:"Přepsat podle vzoru zbytek první stránky.", submit:"Odkaz na konverzní stránku do WhatsAppu", pb:"trychtyr"},
-  {id:"t6", task:"Vytvořit cover e-booku pomocí PROMPTU 2 z kapitoly.", submit:"Náhled coveru do WhatsAppu", pb:"trychtyr"},
+ {id:"b2", ico:"🧲", name:"Blok 2 · Konverzní stránka", sub:"Hanuš dodá texty → Alex postaví a napojí. Start hned.", tasks:[
+  {id:"t4", owner:"H", task:"Vyber z výzkumu vítězný titulek (udičku) a napiš k němu texty stránky: podnadpis, 3–5 odrážek “co se dozvíte” a text tlačítka.\nVšechno jazykem zákazníka – doslovná slova, fráze, sny a bolesti z hovorů. Nic nevymýšlej.", submit:"Odkaz na dokument s texty do WhatsAppu", pb:"trychtyr"},
+  {id:"t5", owner:"A", dep:"Až Hanuš dodá texty (úkol 1)", task:"Prostuduj kapitolu “První konverzní trychtýř”. Pomocí PROMPTU 1 nech Clauda vytvořit konverzní stránku, vlož do ní Hanušovy texty a nasaď ji na doménu.", submit:"Odkaz na živou konverzní stránku", pb:"trychtyr"},
+  {id:"t6", owner:"A", task:"Facebook Pixel + Conversions API + Make webhook podle návodu v kapitole. Otestuj, že se testovací lead propíše do databáze a událost dorazí do Events Manageru.", submit:"Snímek testovací události v Events Manageru", pb:"trychtyr"},
  ]},
 
- {id:"b3", ico:"🎥", name:"Blok 3 · Vztahové video", sub:"Scénář přepsat, natočit nanečisto, pak na ostro.", tasks:[
-  {id:"t7", task:"Přepsat celý scénář vztahového videa podle vzoru (všech 5 stran).\n(*dobrovolné, ale velmi doporučené: mezitím další 20minutové hloubkové rozhovory s podnikateli z vaší niky)", submit:"Odkaz na upravený dokument", pb:"trychtyr"},
-  {id:"t8", task:"Zkusit si natočit nanečisto vztahové video na mobil.", submit:"Poslat video do WhatsAppu", pb:"trychtyr"},
-  {id:"t9", task:"Natočit vztahové video na ostro. (Na šířku)", submit:"Poslat video do WhatsAppu", pb:"trychtyr"},
+ {id:"b3", ico:"📘", name:"Blok 3 · E-book (magnet)", sub:"Obsah = scénář vztahového videa v textu. Hanuš píše, Alex sází.", tasks:[
+  {id:"t7", owner:"H", task:"Napiš obsah e-booku. Je to ten samý obsah jako scénář vztahového videa, jen v textové formě – proto si na scénáři dej záležet.", submit:"Odkaz na dokument s obsahem e-booku", pb:"trychtyr"},
+  {id:"t8", owner:"A", task:"Vytvoř cover e-booku pomocí PROMPTU 2 z kapitoly První konverzní trychtýř.", submit:"Náhled coveru do WhatsAppu", pb:"trychtyr"},
+  {id:"t9", owner:"A", dep:"Až Hanuš dodá obsah (úkol 1)", task:"Vysázej e-book do PDF, nasaď cover a napoj na stránku – po vyplnění formuláře musí PDF přijít člověku e-mailem. Otestuj na vlastní adrese.", submit:"PDF e-booku + potvrzení, že test dorazil", pb:"trychtyr"},
  ]},
 
- {id:"b4", ico:"🎬", name:"Blok 4 · Facebook a spuštění reklam", sub:"Účet, text, videa, kampaň, start.", tasks:[
-  {id:"t10", task:"Facebook - Založení a první nastavení účtu. Zároveň si založte Facebook Pixel a Conversions API podle návodu v kapitole První konverzní trychtýř.", submit:"Poslat snímek, že je založeno", pb:"trychtyr"},
-  {id:"t11", task:"Text reklamy (KDO, CO, PROČ, JAK) - šablona a Standův tahák, který si můžete přepsat pro svou niku, je v kapitole Reklamy.", submit:"Poslat odkaz na text", pb:"reklamy"},
-  {id:"t12", task:"Tento text reklamy následně natočit ve třech stejných variantách. (Na výšku)", submit:"Poslat videa reklam", pb:"reklamy"},
-  {id:"t13", task:"Založit kampaň a vložit text + video.", submit:"Snímek obrazovky", pb:"reklamy"},
-  {id:"t14", task:"Spustit reklamy :-)", submit:"Snímek obrazovky", pb:"reklamy"},
+ {id:"b4", ico:"🎥", name:"Blok 4 · Vztahové video", sub:"Hanuš je tvář: scénář a natáčení. Alex nasadí.", tasks:[
+  {id:"t10", owner:"H", task:"Přepiš celý scénář vztahového videa podle vzoru (všech 5 stran).", submit:"Odkaz na upravený dokument", pb:"trychtyr"},
+  {id:"t11", owner:"H", task:"Zkus si natočit nanečisto vztahové video na mobil.", submit:"Poslat video do WhatsAppu", pb:"trychtyr"},
+  {id:"t12", owner:"H", task:"Natočit vztahové video na ostro. (Na šířku)", submit:"Poslat video do WhatsAppu", pb:"trychtyr"},
+  {id:"t13", owner:"A", dep:"Až Hanuš natočí načisto (úkol 3)", task:"Nahraj video na hosting a vlož ho do děkovací stránky. Zkontroluj, že se přehraje i na mobilu.", submit:"Odkaz na děkovací stránku s videem", pb:"trychtyr"},
  ]},
 
- {id:"b5", ico:"✉️", name:"Blok 5 · Vztahové e-maily", sub:"Šest e-mailů, které za vás budují vztah.", tasks:[
-  {id:"t15", task:"Přepsání všech šesti vztahových e-mailů podle vzoru.\n(Klidně po jednom. Hotové je až všech 6.)", submit:"Odkaz na dokument s texty", pb:"trychtyr"},
+ {id:"b5", ico:"🎬", name:"Blok 5 · Reklamy a spuštění", sub:"Alex připraví účet, Hanuš text a videa, Alex spustí.", tasks:[
+  {id:"t14", owner:"A", task:"Facebook – založení a první nastavení účtu (Business Manager + reklamní účet). Napoj na něj Pixel a Conversions API podle návodu v kapitole První konverzní trychtýř.", submit:"Poslat snímek, že je založeno", pb:"trychtyr"},
+  {id:"t15", owner:"H", task:"Text reklamy (KDO, CO, PROČ, JAK) – šablona a Standův tahák, který si můžeš přepsat pro svou niku, je v kapitole Reklamy.", submit:"Poslat odkaz na text", pb:"reklamy"},
+  {id:"t16", owner:"H", task:"Tento text reklamy následně natočit ve třech stejných variantách. (Na výšku)", submit:"Poslat videa reklam", pb:"reklamy"},
+  {id:"t17", owner:"A", dep:"Až Hanuš dodá text a videa (úkoly 2 a 3)", task:"Založit kampaň a vložit text + videa. Zkontroluj cílení, rozpočet a že kampaň měří správnou konverzi.", submit:"Snímek obrazovky kampaně", pb:"reklamy"},
+  {id:"t18", owner:"A", task:"Spustit reklamy :-)", submit:"Snímek obrazovky", pb:"reklamy"},
  ]},
 
- {id:"b6", ico:"📈", name:"Blok 6 · Optimalizace a rámovací hovory", sub:"Nové kreativy, čísla, první hovory.", tasks:[
-  {id:"t16", task:"Příprava nových reklam KDO, CO, PROČ, JAK - alespoň 2 nová videa (Může být stejný text, ale s jinou udičkou. Tj. první větou.)", submit:"Videa reklam", pb:"reklamy"},
-  {id:"t17", task:"Příprava statistik pro společné setkání:\nKolik bylo utraceno?\nKolik přišlo leadů?\nKolik bylo telefonních čísel?\nKolik zamluvených konzultací?\nKolik proběhlo prodejních hovorů?", submit:"Soupis statistik do chatu", pb:""},
-  {id:"t18", task:"Čtyři rámovací hovory podle scénáře.\n(Postupně, jak se domluvíte s lidmi z výzkumu.)", submit:"Záznamy hovorů", pb:"prodej"},
-  {id:"t19", task:"Vytvoření A/B jednoho testu nadpisů na konverzní stránce podle informací z rámovacích hovorů.", submit:"Snímek obrazovky nového nadpisu.", pb:"trychtyr"},
+ {id:"b6", ico:"✉️", name:"Blok 6 · Vztahové e-maily", sub:"Hanuš píše, Alex napojuje sekvenci.", tasks:[
+  {id:"t19", owner:"H", task:"Přepsání všech šesti vztahových e-mailů podle vzoru.\n(Klidně po jednom. Hotové je až všech 6.)", submit:"Odkaz na dokument s texty", pb:"trychtyr"},
+  {id:"t20", owner:"A", dep:"Až Hanuš dodá texty (úkol 1)", task:"Nahraj e-maily do mailingového nástroje jako automatickou sekvenci a otestuj doručení na vlastní adresu (i do spamu).", submit:"Snímek nastavené sekvence + potvrzení testu", pb:"trychtyr"},
  ]},
 
- {id:"b7", ico:"📞", name:"Blok 7 · Prodej", sub:"Prodejní hovory podle scénáře.", tasks:[
-  {id:"t20", task:"Aktualizování statistik pro společné setkání:\nKolik bylo utraceno?\nKolik přišlo leadů?\nKolik bylo telefonních čísel?\nKolik zamluvených konzultací?\nKolik proběhlo prodejních hovorů?", submit:"Soupis statistik do chatu", pb:""},
-  {id:"t21", task:"Prodejní hovory podle scénáře (dle rezervací v Calendly).", submit:"Záznamy hovorů do WhatsAppu", pb:"prodej"},
+ {id:"b7", ico:"🚀", name:"Blok 7 · Kontrola a START", sub:"Tohle projedete spolu, než pustíte peníze do reklam.", tasks:[
+  {id:"t21", owner:"HA", task:"Proklikejte celý funnel jako zákazník: reklama → konverzní stránka → e-book do mailu → děkovací video → první vztahový e-mail. Na mobilu i na počítači.", submit:"Potvrzení, že celá cesta funguje", pb:"trychtyr"},
+  {id:"t22", owner:"HA", task:"Ověřte měření: lead se propsal do databáze, událost dorazila do Events Manageru přes Pixel i Conversions API. Teprve pak škálujte rozpočet.", submit:"Snímek události v Events Manageru", pb:"trychtyr"},
  ]},
 
- {id:"b8", ico:"🤝", name:"Blok 8 · Doručení služby", sub:"Kroky doslovně z kapitoly “Začátek spolupráce a představení”.", tasks:[
-  {id:"t22", task:"Zaslat mu fakturu za vaše služby (začínáte pracovat po jejím uhrazení, ne dřív).", submit:"Uhrazená faktura", pb:"doruceni"},
-  {id:"t23", task:"Spolu s fakturou poslat k podpisu obchodní podmínky. Spolupráce vašeho typu má mít jasně stanovená pravidla.", submit:"Podepsané podmínky", pb:"doruceni"},
-  {id:"t24", task:"Představení podle scénáře. Po uhrazení platby se s klientem spojíte v prvním pracovním hovoru.", submit:"Proběhlý první pracovní hovor", pb:"doruceni"},
-  {id:"t25", task:"Zaúkolujete svého zákazníka. Pro rychlé zahájení prací budete potřebovat podklady A-D.", submit:"Podklady A-D od klienta", pb:"doruceni"},
-  {id:"t26", task:"Dáte klientovi plán. Lidé milují plány a jízdní řády. Bez plánu vzniká nejistota.", submit:"Odeslaný plán klientovi", pb:"doruceni"},
+ {id:"b8", ico:"📈", name:"Blok 8 · Optimalizace a rámovací hovory", sub:"Po spuštění – nové kreativy, čísla, první hovory.", tasks:[
+  {id:"t23", owner:"H", task:"Příprava nových reklam KDO, CO, PROČ, JAK - alespoň 2 nová videa (Může být stejný text, ale s jinou udičkou. Tj. první větou.)", submit:"Videa reklam", pb:"reklamy"},
+  {id:"t24", owner:"A", task:"Příprava statistik pro společné setkání:\nKolik bylo utraceno?\nKolik přišlo leadů?\nKolik bylo telefonních čísel?\nKolik zamluvených konzultací?\nKolik proběhlo prodejních hovorů?", submit:"Soupis statistik do chatu", pb:""},
+  {id:"t25", owner:"H", task:"Čtyři rámovací hovory podle scénáře.", submit:"Záznamy hovorů", pb:"prodej"},
+  {id:"t26", owner:"A", dep:"Podle toho, co zazní v rámovacích hovorech", task:"Vytvoření A/B jednoho testu nadpisů na konverzní stránce podle informací z rámovacích hovorů.", submit:"Snímek obrazovky nového nadpisu.", pb:"trychtyr"},
  ]},
 
- {id:"b9", ico:"🏁", name:"Blok 9 · Práce pro klienta", sub:"Plán doslovně z kapitoly “Dejte klientovi plán”.", tasks:[
-  {id:"t27", task:"1. týden: Zákaznický výzkum a návrh konverzního trychtýře v PPT.", submit:"Návrh trychtýře", pb:"doruceni"},
-  {id:"t28", task:"2. týden: Grafický návrh konverzní stránky a iterace na základě konzultace.", submit:"Grafický návrh", pb:"doruceni"},
-  {id:"t29", task:"3. týden: Návrh a spuštění prvních Facebook reklam s rozpočtem 100-200 Kč denně.", submit:"Spuštěné reklamy", pb:"doruceni"},
-  {id:"t30", task:"4. týden: Optimalizace reklam a první A/B testy klíčových proměnných.", submit:"A/B testy", pb:"doruceni"},
-  {id:"t31", task:"5. týden: REPORT: Vyhodnocení prvních výsledků a návrh plánu na další období.", submit:"Report klientovi", pb:"doruceni"},
+ {id:"b9", ico:"📞", name:"Blok 9 · Prodej", sub:"Hanuš volá, Alex hlídá čísla.", tasks:[
+  {id:"t27", owner:"A", task:"Aktualizování statistik pro společné setkání:\nKolik bylo utraceno?\nKolik přišlo leadů?\nKolik bylo telefonních čísel?\nKolik zamluvených konzultací?\nKolik proběhlo prodejních hovorů?", submit:"Soupis statistik do chatu", pb:""},
+  {id:"t28", owner:"H", task:"Prodejní hovory podle scénáře (dle rezervací v Calendly).", submit:"Záznamy hovorů do WhatsAppu", pb:"prodej"},
+ ]},
+
+ {id:"b10", ico:"🤝", name:"Blok 10 · Doručení služby", sub:"Kroky doslovně z kapitoly “Začátek spolupráce a představení”.", tasks:[
+  {id:"t29", owner:"HA", task:"Zaslat mu fakturu za vaše služby (začínáte pracovat po jejím uhrazení, ne dřív).", submit:"Uhrazená faktura", pb:"doruceni"},
+  {id:"t30", owner:"HA", task:"Spolu s fakturou poslat k podpisu obchodní podmínky. Spolupráce vašeho typu má mít jasně stanovená pravidla.", submit:"Podepsané podmínky", pb:"doruceni"},
+  {id:"t31", owner:"H", task:"Představení podle scénáře. Po uhrazení platby se s klientem spojíte v prvním pracovním hovoru.", submit:"Proběhlý první pracovní hovor", pb:"doruceni"},
+  {id:"t32", owner:"H", task:"Zaúkolujete svého zákazníka. Pro rychlé zahájení prací budete potřebovat podklady A-D.", submit:"Podklady A-D od klienta", pb:"doruceni"},
+  {id:"t33", owner:"HA", task:"Dáte klientovi plán. Lidé milují plány a jízdní řády. Bez plánu vzniká nejistota.", submit:"Odeslaný plán klientovi", pb:"doruceni"},
+ ]},
+
+ {id:"b11", ico:"🏁", name:"Blok 11 · Práce pro klienta", sub:"Plán doslovně z kapitoly “Dejte klientovi plán”.", tasks:[
+  {id:"t34", owner:"HA", task:"1. týden: Zákaznický výzkum a návrh konverzního trychtýře v PPT.", submit:"Návrh trychtýře", pb:"doruceni"},
+  {id:"t35", owner:"A", task:"2. týden: Grafický návrh konverzní stránky a iterace na základě konzultace.", submit:"Grafický návrh", pb:"doruceni"},
+  {id:"t36", owner:"A", task:"3. týden: Návrh a spuštění prvních Facebook reklam s rozpočtem 100-200 Kč denně.", submit:"Spuštěné reklamy", pb:"doruceni"},
+  {id:"t37", owner:"A", task:"4. týden: Optimalizace reklam a první A/B testy klíčových proměnných.", submit:"A/B testy", pb:"doruceni"},
+  {id:"t38", owner:"HA", task:"5. týden: REPORT: Vyhodnocení prvních výsledků a návrh plánu na další období.", submit:"Report klientovi", pb:"doruceni"},
  ]},
 ];
 
 /* fáze / milníky (indexy bloků, 0-based) */
 UPF.milestones = [
  {label:"Zákaznický výzkum", blocks:[0]},
- {label:"Trychtýř + vztahové video", blocks:[1,2]},
- {label:"Reklamy + e-maily", blocks:[3,4]},
- {label:"Optimalizace + rámovací hovory", blocks:[5]},
- {label:"Prodej", blocks:[6]},
- {label:"Doručení služby", blocks:[7,8]},
+ {label:"Stránka + e-book", blocks:[1,2]},
+ {label:"Video + reklamy", blocks:[3,4]},
+ {label:"E-maily + START", blocks:[5,6]},
+ {label:"Optimalizace + prodej", blocks:[7,8]},
+ {label:"Doručení služby", blocks:[9,10]},
 ];
 
 /* všechny kapitoly odemčené – postupujete vlastním tempem */
 UPF.unlocks = { vyzkum:0, trychtyr:0, reklamy:0, prodej:0, doruceni:0, poznamky:0, zdroje:0 };
-
 
 /* ===================== SEKCE ===================== */
 UPF.sections = [

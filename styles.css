@@ -135,6 +135,16 @@ details.acc[open]>summary::after{transform:rotate(180deg)}
 .day .task{font-size:14.8px}
 .day .task .orig{display:block;font-size:11.5px;color:var(--mut2);font-family:var(--disp);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
 .day .task .sub{display:block;margin-top:6px;font-size:13px;color:var(--mut)}
+.own{display:inline-block;font-family:var(--disp);font-weight:700;font-size:11px;letter-spacing:.03em;border-radius:100px;padding:3px 9px;margin-right:8px;vertical-align:2px;white-space:nowrap}
+.own-H{color:#0b5cd6;background:rgba(11,92,214,.09);border:1px solid rgba(11,92,214,.25)}
+.own-A{color:#0f7a5a;background:rgba(15,122,90,.09);border:1px solid rgba(15,122,90,.25)}
+.own-HA{color:var(--purple);background:rgba(145,0,253,.07);border:1px solid rgba(145,0,253,.22)}
+.day .task .dep{display:block;margin-top:6px;font-size:12.5px;color:var(--mut2);font-style:italic}
+.ownfilter{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:18px 0 6px}
+.ownchip{font-family:var(--disp);font-weight:700;font-size:13px;color:var(--mut);background:var(--panel);border:1px solid var(--line2);border-radius:100px;padding:8px 16px;cursor:pointer;transition:all .18s;box-shadow:var(--shadow)}
+.ownchip:hover{border-color:rgba(145,0,253,.35);color:var(--black)}
+.ownchip.on{color:#fff;background:var(--grad);border-color:transparent}
+.ownhint{font-size:12.5px;color:var(--mut2);flex:1 1 100%}
 .day .task .sub b{color:var(--purple)}
 .day input[type=checkbox]{width:21px;height:21px;accent-color:var(--purple);cursor:pointer;margin-top:2px}
 

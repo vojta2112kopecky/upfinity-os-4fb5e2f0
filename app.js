@@ -51,6 +51,10 @@ function nextTask(){var a=allTasks();for(var i=0;i<a.length;i++){if(!done(a[i].i
 function blockOf(tid){for(var i=0;i<UPF.blocks.length;i++){if(UPF.blocks[i].tasks.some(function(t){return t.id===tid;}))return UPF.blocks[i];}return null;}
 function blockDone(bi){var ts=UPF.blocks[bi].tasks;return ts.length>0&&ts.every(function(t){return done(t.id);});}
 function sectionUnlocked(){return true;}
+function ownerFilter(){try{return localStorage.getItem("upf-owner")||"all";}catch(e){return "all";}}
+function setOwnerFilter(v){try{localStorage.setItem("upf-owner",v);}catch(e){}}
+function visible(t){var f=ownerFilter();return f==="all"||t.owner===f||t.owner==="HA";}
+function ownerBadge(o){var d=UPF.owners[o];return d?"<span class=\"own own-"+o+"\">"+d.ico+" "+esc(d.name)+"</span>":"";}
 
 var PB_NAV={vyzkum:"vyzkum",trychtyr:"trychtyr",reklamy:"reklamy",prodej:"prodej",doruceni:"doruceni"};
 
@@ -63,7 +67,7 @@ function renderPrehled(){
   }).join("");
   var nb=nx?blockOf(nx.id):null;
   var today=nx
-    ? "<div class=\"today reveal\"><div class=\"e\">Další krok · "+esc(nb?nb.name:"")+"</div><div class=\"t\">"+inline(nx.task.split("\n")[0])+"</div>"+(nx.submit?"<div class=\"d\">Do WhatsAppu: "+esc(nx.submit)+"</div>":"")+"<button class=\"btn\" data-gotask=\""+nx.id+"\">Otevřít úkol →</button></div>"
+    ? "<div class=\"today reveal\"><div class=\"e\">Další krok · "+esc(nb?nb.name:"")+"</div><div class=\"t\">"+ownerBadge(nx.owner)+inline(nx.task.split("\n")[0])+"</div>"+(nx.submit?"<div class=\"d\">Do WhatsAppu: "+esc(nx.submit)+"</div>":"")+"<button class=\"btn\" data-gotask=\""+nx.id+"\">Otevřít úkol →</button></div>"
     : "<div class=\"today reveal\"><div class=\"e\">Hotovo</div><div class=\"t\">Celý plán splněn. Gratulace 🎉</div></div>";
   return ""
    +"<div class=\"hero reveal\"><div>"
@@ -86,22 +90,33 @@ function renderPrehled(){
 }
 
 function renderPlan(){
+  var f=ownerFilter();
+  var chips="<div class=\"ownfilter reveal\">"
+   +["all","H","A"].map(function(k){
+      var lbl=k==="all"?"👥 Vše":(UPF.owners[k].ico+" "+UPF.owners[k].name);
+      return "<button class=\"ownchip"+(f===k?" on":"")+"\" data-owner=\""+k+"\">"+lbl+"</button>";
+    }).join("")
+   +"<span class=\"ownhint\">"+(f==="all"?"Hanuš = copy, scénáře, natáčení · Alex = e-booky, technika, napojení":UPF.owners[f].name+": "+UPF.owners[f].role+" (společné úkoly vidíš taky)")+"</span></div>";
   var h="<p class=\"eyebrow\">Akční plán pro Nejlepší agenturu</p>"
    +"<h1>Plán po <span class=\"g\">blocích</span></h1>"
-   +"<p class=\"lead\">Žádné datumy ani dny. Jdi blok po bloku svým tempem, odškrtávej hotové úkoly a každý splněný pošli do WhatsAppu.</p>"
-   +"<div class=\"quote reveal\">"+md(UPF.planIntro).replace(/^<p>|<\/p>$/g,"").replace(/<\/p>\n?<p>/g,"<br>")+"</div>";
+   +"<p class=\"lead\">Žádné datumy. Každý úkol má svého člověka – přepni si filtr a vidíš jen to svoje. Hotový úkol odškrtni a pošli do WhatsAppu.</p>"
+   +"<div class=\"quote reveal\">"+md(UPF.planIntro).replace(/^<p>|<\/p>$/g,"").replace(/<\/p>\n?<p>/g,"<br>")+"</div>"
+   +chips;
   UPF.blocks.forEach(function(bl,bi){
+    var shown=bl.tasks.filter(visible);
+    if(!shown.length)return;
     var dn=bl.tasks.filter(function(t){return done(t.id);}).length;
     var ok=dn===bl.tasks.length;
     h+="<section class=\"week reveal"+(ok?" wdone":"")+"\" id=\"block-"+bl.id+"\"><div class=\"week-head\"><h2>"+esc(bl.ico)+" "+esc(bl.name)+"</h2><span class=\"sub\">"+esc(bl.sub)+"</span><span class=\"cnt\" data-block=\""+bi+"\">"+dn+"/"+bl.tasks.length+"</span></div>";
-    bl.tasks.forEach(function(t,ti){
+    shown.forEach(function(t,ti){
       var lines=t.task.split("\n");
       var main=inline(lines[0]);
       var rest=lines.slice(1).map(function(x){return inline(x);}).join("<br>");
       var pb=t.pb?" &nbsp;<a class=\"pblink\" href=\"#"+PB_NAV[t.pb]+"\" data-nav=\""+PB_NAV[t.pb]+"\">📚 kapitola</a>":"";
+      var dep=t.dep?"<span class=\"dep\">⛓ "+esc(t.dep)+"</span>":"";
       h+="<label class=\"day"+(done(t.id)?" done":"")+"\" id=\"task-"+t.id+"\" data-task=\""+t.id+"\">"
        +"<span class=\"num\">Úkol "+(ti+1)+"</span>"
-       +"<span class=\"task\">"+main+(rest?"<br>"+rest:"")
+       +"<span class=\"task\">"+ownerBadge(t.owner)+main+(rest?"<br>"+rest:"")+dep
        +(t.submit?"<span class=\"sub\"><b>Do WhatsAppu:</b> "+esc(t.submit)+"</span>":"")
        +pb+"</span>"
        +"<input type=\"checkbox\" "+(done(t.id)?"checked":"")+" data-t=\""+t.id+"\">"
@@ -205,6 +220,8 @@ document.addEventListener("DOMContentLoaded",function(){
     if(gd){show("plan",gd.dataset.gotask);return;}
     var nv=e.target.closest("[data-nav]");
     if(nv){e.preventDefault();show(nv.dataset.nav);return;}
+    var oc=e.target.closest(".ownchip");
+    if(oc){setOwnerFilter(oc.dataset.owner);show("plan");return;}
     var pc=e.target.closest(".prompt-copy");
     if(pc){var pre=pc.parentNode.querySelector("pre");navigator.clipboard.writeText(pre.textContent).then(function(){pc.textContent="Zkopírováno ✓";setTimeout(function(){pc.textContent="Kopírovat";},1600);});return;}
     if(e.target.matches(".day input[type=checkbox]")){
