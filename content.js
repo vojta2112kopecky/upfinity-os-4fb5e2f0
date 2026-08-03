@@ -1,89 +1,82 @@
 /* Upfinity OS · obsah. HARD RULE: know-how texty DOSLOVNĚ (Vojta Kopecký / Nejlepší agentura). */
 window.UPF = {};
 
-UPF.startDate = "2026-07-24"; /* Den 1 */
+/* ===================== PLÁN (hromadné bloky, bez dat a dnů) ===================== */
+UPF.planIntro = "Změňte svůj příběh: Přestaňte si říkat “To nemůžu.” a začněte si říkat “To můžu.”\nPoužijte bolest a potěšení: Bolest je lenost a vykroucení se, slast je splněný úkol.\nŽádné datumy. Postupujte blok po bloku svým tempem – hotový úkol odškrtněte a pošlete do WhatsAppu.";
 
-/* ===================== PLÁN ===================== */
-UPF.planIntro = "Změňte svůj příběh: Přestaňte si říkat “To nemůžu.” a začněte si říkat “To můžu.”\nPoužijte bolest a potěšení: Bolest je lenost a vykroucení se, slast je splněný úkol.\nDetailní plán akce v malých krůčcích:";
+UPF.blocks = [
+ {id:"b1", ico:"🔎", name:"Blok 1 · Nika a zákaznický výzkum", sub:"Základ všeho. Bez něj funnel nefunguje.", tasks:[
+  {id:"t1", task:"Vyberte si niku ze seznamu v kapitole Zákaznický výzkum a proveďte 5 výzkumných hovorů na vaši niku.\nOpener: “Dobrý den, [jméno], já jsem vás našel na webových stránkách, který si myslím, že jsou moc hezký.., nebo takhle, máte tam moc hezký fotky, na těch jste asi vy..” (celý opener v kapitole Zákaznický výzkum)", submit:"Vybraná nika + 5 nahraných hovorů do WhatsAppu", pb:"vyzkum"},
+  {id:"t2", task:"20x hloubkový 20minutový rozhovor s lidmi z vaší niky.\n(Klidně po částech – 10 rozhovorů, pak dalších 10. Nahrávejte si je.)", submit:"Klíčová slova, klíčové fráze, sny a bolesti do WhatsAppu", pb:"vyzkum"},
+  {id:"t3", task:"Prostudujte si kapitolu “Zákaznický výzkum”. Podle zadání proveďte výzkum skrze ChatGPT a vytvořte dle zadání také první titulky.", submit:"Titulky do WhatsAppu", pb:"vyzkum"},
+ ]},
 
-UPF.plan = [
- {week:"Týden 1", sub:"Nika a zákaznický výzkum · úkoly odevzdáte do WhatsAppu", days:[
-  {n:1, task:"Vyberte si niku ze seznamu v kapitole Zákaznický výzkum a proveďte 5 výzkumných hovorů na vaši niku.\nOpener: “Dobrý den, [jméno], já jsem vás našel na webových stránkách, který si myslím, že jsou moc hezký.., nebo takhle, máte tam moc hezký fotky, na těch jste asi vy..” (celý opener v kapitole Zákaznický výzkum)", submit:"Vybraná nika + 5 nahraných hovorů do WhatsAppu", pb:"vyzkum"},
-  {n:2, task:"10x hloubkový 20minutový rozhovor s lidmi z vaší niky.", submit:"Klíčová slova, klíčové fráze, sny a bolesti do WhatsAppu", pb:"vyzkum"},
-  {n:3, task:"10x hloubkový 20minutový rozhovor s lidmi z vaší niky.", submit:"Klíčová slova, klíčové fráze, sny a bolesti do WhatsAppu", pb:"vyzkum"},
-  {n:4, task:"Prostudujte si kapitolu “Zákaznický výzkum”. Podle zadání proveďte výzkum skrze ChatGPT a vytvořte dle zadání také první titulky. Zítra je využijete.", submit:"Titulky do WhatsAppu", pb:"vyzkum"},
-  {n:5, task:"Prostudujte si kapitolu “První konverzní trychtýř”. Pomocí PROMPTU 1 z kapitoly si nechte od Clauda vytvořit svou konverzní stránku (včetně Facebook Pixelu a Conversions API) a vložte do ní jeden titulek ze včera.", submit:"Odkaz na konverzní stránku do WhatsAppu", pb:"trychtyr"},
-  {n:6, task:"Přepsat podle vzoru zbytek první stránky\n(*dobrovolné, ale velmi doporučené: 1x 20 minutový hloubkový rozhovor podnikatelem z vaší niky)", submit:"Odkaz na konverzní stránku do WhatsAppu", pb:"trychtyr"},
-  {n:7, task:"Přepsat první stránku vztahového videa podle scénáře\n(*dobrovolné, ale velmi doporučené: druhý 20 minutový hloubkový rozhovor podnikatelem z vaší niky)", submit:"Odkaz na první stránku upraveného dokumentu", pb:"trychtyr"},
+ {id:"b2", ico:"🧲", name:"Blok 2 · Konverzní stránka", sub:"Claude vám ji postaví. Vy dodáte texty z výzkumu.", tasks:[
+  {id:"t4", task:"Prostudujte si kapitolu “První konverzní trychtýř”. Pomocí PROMPTU 1 z kapitoly si nechte od Clauda vytvořit svou konverzní stránku (včetně Facebook Pixelu a Conversions API) a vložte do ní jeden titulek z výzkumu.", submit:"Odkaz na konverzní stránku do WhatsAppu", pb:"trychtyr"},
+  {id:"t5", task:"Přepsat podle vzoru zbytek první stránky.", submit:"Odkaz na konverzní stránku do WhatsAppu", pb:"trychtyr"},
+  {id:"t6", task:"Vytvořit cover e-booku pomocí PROMPTU 2 z kapitoly.", submit:"Náhled coveru do WhatsAppu", pb:"trychtyr"},
  ]},
- {week:"Týden 2", sub:"Vztahové video a první reklama · úkoly odevzdáte do WhatsAppu", days:[
-  {n:8, task:"Přepsat druhou stránku vztahového videa podle scénáře\n(*dobrovolné, ale velmi doporučené: třetí 20 minutový hloubkový rozhovor podnikatelem z vaší niky)", submit:"Odkaz na první stránku upraveného dokumentu", pb:"trychtyr"},
-  {n:9, task:"Přepsat třetí stránku vztahového videa podle scénáře", submit:"Odkaz na první stránku upraveného dokumentu", pb:"trychtyr"},
-  {n:10, task:"Přepsat čtvrtou a pátou stránku vztahového videa podle scénáře", submit:"Odkaz na první stránku upraveného dokumentu", pb:"trychtyr"},
-  {n:11, task:"Zkusit si natočit nanečisto vztahové video na mobil.", submit:"Poslat video do WhatsAppu", pb:"trychtyr"},
-  {n:12, task:"Natočit vztahové video na ostro. (Na šířku)", submit:"Poslat video do WhatsAppu", pb:"trychtyr"},
-  {n:13, task:"Facebook - Založení a první nastavení účtu. Zároveň si založte Facebook Pixel a Conversions API podle návodu v kapitole První konverzní trychtýř.", submit:"Poslat snímek, že je založeno"},
-  {n:14, task:"Text reklamy (KDO, CO, PROČ, JAK) - šablona a Standův tahák, který si můžete přepsat pro svou niku, je v kapitole Reklamy.", submit:"Poslat odkaz na text", pb:"reklamy"},
+
+ {id:"b3", ico:"🎥", name:"Blok 3 · Vztahové video", sub:"Scénář přepsat, natočit nanečisto, pak na ostro.", tasks:[
+  {id:"t7", task:"Přepsat celý scénář vztahového videa podle vzoru (všech 5 stran).\n(*dobrovolné, ale velmi doporučené: mezitím další 20minutové hloubkové rozhovory s podnikateli z vaší niky)", submit:"Odkaz na upravený dokument", pb:"trychtyr"},
+  {id:"t8", task:"Zkusit si natočit nanečisto vztahové video na mobil.", submit:"Poslat video do WhatsAppu", pb:"trychtyr"},
+  {id:"t9", task:"Natočit vztahové video na ostro. (Na šířku)", submit:"Poslat video do WhatsAppu", pb:"trychtyr"},
  ]},
- {week:"Týden 3", sub:"Spuštění reklam a vztahové e-maily · úkoly odevzdáte do WhatsAppu", days:[
-  {n:15, task:"Tento text reklamy následně natočit ve třech stejných variantách. (Na výšku)", submit:"Poslat video 1 reklamy", pb:"reklamy"},
-  {n:16, task:"Založit kampaň a vložit text + video", submit:"Snímek obrazovky"},
-  {n:17, task:"Přepsání prvního vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
-  {n:18, task:"Přepsání druhého vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
-  {n:19, task:"Spustit reklamy :-)", submit:"Snímek obrazovky"},
-  {n:20, task:"Přepsání třetího vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
-  {n:21, task:"Přepsání čtvrtého vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
+
+ {id:"b4", ico:"🎬", name:"Blok 4 · Facebook a spuštění reklam", sub:"Účet, text, videa, kampaň, start.", tasks:[
+  {id:"t10", task:"Facebook - Založení a první nastavení účtu. Zároveň si založte Facebook Pixel a Conversions API podle návodu v kapitole První konverzní trychtýř.", submit:"Poslat snímek, že je založeno", pb:"trychtyr"},
+  {id:"t11", task:"Text reklamy (KDO, CO, PROČ, JAK) - šablona a Standův tahák, který si můžete přepsat pro svou niku, je v kapitole Reklamy.", submit:"Poslat odkaz na text", pb:"reklamy"},
+  {id:"t12", task:"Tento text reklamy následně natočit ve třech stejných variantách. (Na výšku)", submit:"Poslat videa reklam", pb:"reklamy"},
+  {id:"t13", task:"Založit kampaň a vložit text + video.", submit:"Snímek obrazovky", pb:"reklamy"},
+  {id:"t14", task:"Spustit reklamy :-)", submit:"Snímek obrazovky", pb:"reklamy"},
  ]},
- {week:"Týden 4", sub:"Optimalizace a rámovací hovory · úkoly odevzdáte do WhatsAppu", days:[
-  {n:22, task:"Přepsání pátého vztahového e-mailu", submit:"Odkaz na dokument s textem", pb:"trychtyr"},
-  {n:23, task:"Přepsání šestého vztahového e-mailu", submit:"Odkaz na dokument s textem"},
-  {n:24, task:"Příprava nových reklam KDO, CO, PROČ, JAK - alespoň 2 nová videa (Může být stejný text, ale s jinou udičkou. Tj. první větou.)", submit:"Video reklamy", pb:"reklamy"},
-  {n:25, task:"Příprava statistik pro společné setkání:\nKolik bylo utraceno?\nKolik přišlo leadů?\nKolik bylo telefonních čísel?\nKolik zamluvených konzultací?\nKolik proběhlo prodejních hovorů?", submit:"Soupis statistik do chatu"},
-  {n:26, task:"První rámovací hovor podle scénáře", submit:"Záznam hovoru", pb:"prodej"},
-  {n:27, task:"Druhý rámovací hovor podle scénáře", submit:"Záznam hovoru", pb:"prodej"},
-  {n:28, task:"Vytvoření A/B jednoho testu nadpisů na konverzní stránce podle informací z rámovacích hovorů.", submit:"Snímek obrazovky nového nadpisu."},
+
+ {id:"b5", ico:"✉️", name:"Blok 5 · Vztahové e-maily", sub:"Šest e-mailů, které za vás budují vztah.", tasks:[
+  {id:"t15", task:"Přepsání všech šesti vztahových e-mailů podle vzoru.\n(Klidně po jednom. Hotové je až všech 6.)", submit:"Odkaz na dokument s texty", pb:"trychtyr"},
  ]},
- {week:"Týden 5", sub:"Prodej · úkoly odevzdáte do WhatsAppu", days:[
-  {n:29, task:"Třetí rámovací hovor podle scénáře", submit:"Záznam hovoru", pb:"prodej"},
-  {n:30, task:"Čtvrtý rámovací hovor podle scénáře", submit:"Záznam hovoru", pb:"prodej"},
-  {n:31, task:"Aktualizování statistik pro společné setkání:\nKolik bylo utraceno?\nKolik přišlo leadů?\nKolik bylo telefonních čísel?\nKolik zamluvených konzultací?\nKolik proběhlo prodejních hovorů?", submit:"Soupis statistik do chatu"},
-  {n:32, task:"Prodejní hovory podle scénáře (dle rezervací v Calendly)", submit:"Záznamy hovorů do WhatsAppu", pb:"prodej"},
-  {n:33, task:"Prodejní hovory podle scénáře (dle rezervací v Calendly)", submit:"Záznamy hovorů do WhatsAppu", pb:"prodej"},
-  {n:34, task:"Volný den.", off:true},
-  {n:35, task:"Volný den.", off:true},
+
+ {id:"b6", ico:"📈", name:"Blok 6 · Optimalizace a rámovací hovory", sub:"Nové kreativy, čísla, první hovory.", tasks:[
+  {id:"t16", task:"Příprava nových reklam KDO, CO, PROČ, JAK - alespoň 2 nová videa (Může být stejný text, ale s jinou udičkou. Tj. první větou.)", submit:"Videa reklam", pb:"reklamy"},
+  {id:"t17", task:"Příprava statistik pro společné setkání:\nKolik bylo utraceno?\nKolik přišlo leadů?\nKolik bylo telefonních čísel?\nKolik zamluvených konzultací?\nKolik proběhlo prodejních hovorů?", submit:"Soupis statistik do chatu", pb:""},
+  {id:"t18", task:"Čtyři rámovací hovory podle scénáře.\n(Postupně, jak se domluvíte s lidmi z výzkumu.)", submit:"Záznamy hovorů", pb:"prodej"},
+  {id:"t19", task:"Vytvoření A/B jednoho testu nadpisů na konverzní stránce podle informací z rámovacích hovorů.", submit:"Snímek obrazovky nového nadpisu.", pb:"trychtyr"},
  ]},
- {week:"Týden 6", sub:"Doručení služby · kroky doslovně z kapitoly “Začátek spolupráce a představení”", days:[
-  {n:36, task:"Zaslat mu fakturu za vaše služby (začínáte pracovat po jejím uhrazení, nikoliv po vystavení - toto je důležité pro kvalitu spolupráce a motivaci klienta optimálně spolupracovat)", submit:"Uhrazená faktura", pb:"doruceni"},
-  {n:37, task:"Spolu s fakturou poslat k podpisu obchodní podmínky. Spolupráce vašeho klienta k ničemu nezavazuje, tedy se zněním podmínek nebývá problém. Pokud by problém vznikl, je to varovné znamení, že klient možná bude problematický.", submit:"Podepsané podmínky", pb:"doruceni"},
-  {n:38, task:"Představení podle scénáře. Po uhrazení platby se s klientem spojíte v rámci prvního pracovního hovoru a předvedete své natrénované představení.", submit:"Proběhlý první pracovní hovor", pb:"doruceni"},
-  {n:39, task:"Zaúkolujete svého zákazníka. Pro rychlé zahájení prací budete potřebovat od klienta rychle doplnit informace a vy si o ně efektivně požádáte.", submit:"Podklady A-D od klienta", pb:"doruceni"},
-  {n:40, task:"Dáte klientovi plán. Lidé milují plány a jízdní řády. Bez plánu vzniká úzkost a vy chcete, aby se s vámi zákazník cítil bezpečně. Pokud s vámi bude cítit úzkost, spíše o zakázku přijdete.", submit:"Odeslaný plán klientovi", pb:"doruceni"},
-  {n:41, task:"Volný den.", off:true},
-  {n:42, task:"Volný den.", off:true},
+
+ {id:"b7", ico:"📞", name:"Blok 7 · Prodej", sub:"Prodejní hovory podle scénáře.", tasks:[
+  {id:"t20", task:"Aktualizování statistik pro společné setkání:\nKolik bylo utraceno?\nKolik přišlo leadů?\nKolik bylo telefonních čísel?\nKolik zamluvených konzultací?\nKolik proběhlo prodejních hovorů?", submit:"Soupis statistik do chatu", pb:""},
+  {id:"t21", task:"Prodejní hovory podle scénáře (dle rezervací v Calendly).", submit:"Záznamy hovorů do WhatsAppu", pb:"prodej"},
  ]},
- {week:"Týden 7", sub:"Práce pro klienta · plán doslovně z kapitoly “Dejte klientovi plán”", days:[
-  {n:43, task:"1. týden: Zákaznický výzkum a návrh konverzního trychtýře v PPT", submit:"Návrh trychtýře", pb:"doruceni"},
-  {n:44, task:"2. týden: Grafický návrh konverzní stránky a iterace na základě konzultace s klientem", submit:"Grafický návrh", pb:"doruceni"},
-  {n:45, task:"3. týden: Návrh a spuštění prvním Facebook reklam s rozpočtem 100-200 Kč denně.", submit:"Spuštěné reklamy", pb:"doruceni"},
-  {n:46, task:"4. týden: Optimalizace reklam a první A/B testy klíčových proměnných (nadpisy, obrázky...)", submit:"A/B testy", pb:"doruceni"},
-  {n:47, task:"5. týden: REPORT: Vyhodnocení prvních výsledků a návrh plánu na další měsíc", submit:"Report klientovi", pb:"doruceni"},
-  {n:48, task:"Volný den.", off:true},
-  {n:49, task:"Volný den. Gratulace, systém jede.", off:true},
+
+ {id:"b8", ico:"🤝", name:"Blok 8 · Doručení služby", sub:"Kroky doslovně z kapitoly “Začátek spolupráce a představení”.", tasks:[
+  {id:"t22", task:"Zaslat mu fakturu za vaše služby (začínáte pracovat po jejím uhrazení, ne dřív).", submit:"Uhrazená faktura", pb:"doruceni"},
+  {id:"t23", task:"Spolu s fakturou poslat k podpisu obchodní podmínky. Spolupráce vašeho typu má mít jasně stanovená pravidla.", submit:"Podepsané podmínky", pb:"doruceni"},
+  {id:"t24", task:"Představení podle scénáře. Po uhrazení platby se s klientem spojíte v prvním pracovním hovoru.", submit:"Proběhlý první pracovní hovor", pb:"doruceni"},
+  {id:"t25", task:"Zaúkolujete svého zákazníka. Pro rychlé zahájení prací budete potřebovat podklady A-D.", submit:"Podklady A-D od klienta", pb:"doruceni"},
+  {id:"t26", task:"Dáte klientovi plán. Lidé milují plány a jízdní řády. Bez plánu vzniká nejistota.", submit:"Odeslaný plán klientovi", pb:"doruceni"},
+ ]},
+
+ {id:"b9", ico:"🏁", name:"Blok 9 · Práce pro klienta", sub:"Plán doslovně z kapitoly “Dejte klientovi plán”.", tasks:[
+  {id:"t27", task:"1. týden: Zákaznický výzkum a návrh konverzního trychtýře v PPT.", submit:"Návrh trychtýře", pb:"doruceni"},
+  {id:"t28", task:"2. týden: Grafický návrh konverzní stránky a iterace na základě konzultace.", submit:"Grafický návrh", pb:"doruceni"},
+  {id:"t29", task:"3. týden: Návrh a spuštění prvních Facebook reklam s rozpočtem 100-200 Kč denně.", submit:"Spuštěné reklamy", pb:"doruceni"},
+  {id:"t30", task:"4. týden: Optimalizace reklam a první A/B testy klíčových proměnných.", submit:"A/B testy", pb:"doruceni"},
+  {id:"t31", task:"5. týden: REPORT: Vyhodnocení prvních výsledků a návrh plánu na další období.", submit:"Report klientovi", pb:"doruceni"},
  ]},
 ];
 
-/* fáze / milníky (index týdnů, 0-based) */
+/* fáze / milníky (indexy bloků, 0-based) */
 UPF.milestones = [
- {label:"Zákaznický výzkum", weeks:[0]},
- {label:"Trychtýř + vztahové video", weeks:[1]},
- {label:"Reklamy + e-maily", weeks:[2]},
- {label:"Optimalizace + rámovací hovory", weeks:[3]},
- {label:"Prodej", weeks:[4]},
- {label:"Doručení služby", weeks:[5,6]},
+ {label:"Zákaznický výzkum", blocks:[0]},
+ {label:"Trychtýř + vztahové video", blocks:[1,2]},
+ {label:"Reklamy + e-maily", blocks:[3,4]},
+ {label:"Optimalizace + rámovací hovory", blocks:[5]},
+ {label:"Prodej", blocks:[6]},
+ {label:"Doručení služby", blocks:[7,8]},
 ];
 
-/* odemykání kapitol: kapitola se odemkne po splnění všech pracovních dní <= unlockAfterDay */
-UPF.unlocks = { vyzkum:0, trychtyr:4, reklamy:13, prodej:21, doruceni:33, poznamky:0, zdroje:0 };
+/* všechny kapitoly odemčené – postupujete vlastním tempem */
+UPF.unlocks = { vyzkum:0, trychtyr:0, reklamy:0, prodej:0, doruceni:0, poznamky:0, zdroje:0 };
+
 
 /* ===================== SEKCE ===================== */
 UPF.sections = [

@@ -42,56 +42,36 @@ function md(src){
   return out.join("\n");
 }
 
-/* ---------- state ---------- */
-function done(n){try{return localStorage.getItem("upf-day-"+n)==="1";}catch(e){return false;}}
-function setDone(n,v){try{localStorage.setItem("upf-day-"+n,v?"1":"0");}catch(e){}}
-function allDays(){var a=[];UPF.plan.forEach(function(w){w.days.forEach(function(d){a.push(d);});});return a;}
-function workDays(){return allDays().filter(function(d){return !d.off;});}
-function stats(){var a=workDays();var dn=a.filter(function(d){return done(d.n);}).length;return {done:dn,total:a.length,pct:a.length?Math.round(dn/a.length*100):0};}
-function nextDay(){var a=workDays();for(var i=0;i<a.length;i++){if(!done(a[i].n))return a[i];}return null;}
-function weekDone(wi){var days=UPF.plan[wi].days.filter(function(d){return !d.off;});return days.length>0&&days.every(function(d){return done(d.n);});}
-
-function dayDate(n){
-  var parts=(UPF.startDate||"2026-07-24").split("-");
-  var base=new Date(+parts[0],+parts[1]-1,+parts[2]);
-  base.setDate(base.getDate()+(n-1));
-  var dow=["ne","po","út","st","čt","pá","so"][base.getDay()];
-  return dow+" "+base.getDate()+". "+(base.getMonth()+1)+".";
-}
-
-var URLUNLOCK=(function(){try{var v=(new URLSearchParams(location.search)).get("unlock")||"";return v.split(",").map(function(s){return s.trim().toLowerCase();}).filter(Boolean);}catch(e){return [];}})();
-function sectionUnlocked(id){
-  if(URLUNLOCK.indexOf("all")>=0||URLUNLOCK.indexOf(id)>=0)return true;
-  var after=UPF.unlocks[id];
-  if(after===undefined||after===0)return true;
-  var need=workDays().filter(function(d){return d.n<=after;});
-  return need.every(function(d){return done(d.n);});
-}
-function unlockLabel(id){
-  var after=UPF.unlocks[id],wi=0;
-  for(var i=0;i<UPF.plan.length;i++){if(UPF.plan[i].days.some(function(d){return d.n===after;})){wi=i;break;}}
-  return "Odemkne se po splnění všech úkolů: "+UPF.plan[wi].week;
-}
+/* ---------- state (hromadné bloky, bez dnů a dat) ---------- */
+function done(id){try{return localStorage.getItem("upf-task-"+id)==="1";}catch(e){return false;}}
+function setDone(id,v){try{localStorage.setItem("upf-task-"+id,v?"1":"0");}catch(e){}}
+function allTasks(){var a=[];UPF.blocks.forEach(function(b){b.tasks.forEach(function(t){a.push(t);});});return a;}
+function stats(){var a=allTasks();var dn=a.filter(function(t){return done(t.id);}).length;return {done:dn,total:a.length,pct:a.length?Math.round(dn/a.length*100):0};}
+function nextTask(){var a=allTasks();for(var i=0;i<a.length;i++){if(!done(a[i].id))return a[i];}return null;}
+function blockOf(tid){for(var i=0;i<UPF.blocks.length;i++){if(UPF.blocks[i].tasks.some(function(t){return t.id===tid;}))return UPF.blocks[i];}return null;}
+function blockDone(bi){var ts=UPF.blocks[bi].tasks;return ts.length>0&&ts.every(function(t){return done(t.id);});}
+function sectionUnlocked(){return true;}
 
 var PB_NAV={vyzkum:"vyzkum",trychtyr:"trychtyr",reklamy:"reklamy",prodej:"prodej",doruceni:"doruceni"};
 
 /* ---------- render ---------- */
 function renderPrehled(){
-  var s=stats(),nx=nextDay();
+  var s=stats(),nx=nextTask();
   var miles=UPF.milestones.map(function(m){
-    var ok=m.weeks.every(weekDone);
+    var ok=m.blocks.every(blockDone);
     return "<div class=\"mile"+(ok?" done":"")+"\"><span class=\"dot\"></span><div class=\"ml\">"+esc(m.label)+"</div></div>";
   }).join("");
+  var nb=nx?blockOf(nx.id):null;
   var today=nx
-    ? "<div class=\"today reveal\"><div class=\"e\">Dnešní krok · Den "+nx.n+" · "+dayDate(nx.n)+"</div><div class=\"t\">"+inline(nx.task.split("\n")[0])+"</div>"+(nx.submit?"<div class=\"d\">Do WhatsAppu: "+esc(nx.submit)+"</div>":"")+"<button class=\"btn\" data-goday=\""+nx.n+"\">Otevřít dnešní den →</button></div>"
+    ? "<div class=\"today reveal\"><div class=\"e\">Další krok · "+esc(nb?nb.name:"")+"</div><div class=\"t\">"+inline(nx.task.split("\n")[0])+"</div>"+(nx.submit?"<div class=\"d\">Do WhatsAppu: "+esc(nx.submit)+"</div>":"")+"<button class=\"btn\" data-gotask=\""+nx.id+"\">Otevřít úkol →</button></div>"
     : "<div class=\"today reveal\"><div class=\"e\">Hotovo</div><div class=\"t\">Celý plán splněn. Gratulace 🎉</div></div>";
   return ""
    +"<div class=\"hero reveal\"><div>"
    +"<p class=\"eyebrow\">Upfinity OS · systém Nejlepší agentury</p>"
    +"<h1>Prodávej tak, aby ses <span class=\"g\">už nikdy nebál o peníze</span>.</h1>"
-   +"<p class=\"lead\">Kompletní know-how, tvoje poznámky a každodenní plán. Vlevo panel, tady výsledky. Materiály se odemykají, jak plníš týdny.</p>"
+   +"<p class=\"lead\">Kompletní know-how, tvoje poznámky a plán rozdělený do bloků. Žádné datumy – jdeš svým tempem, odškrtáváš hotové úkoly. Všechny materiály máš odemčené.</p>"
    +"</div><img class=\"hero-mark\" src=\"assets/mark.svg\" alt=\"Upfinity\"></div>"
-   +"<div class=\"progwrap reveal\"><div class=\"progwrap-top\"><span class=\"eyebrow\" style=\"margin:0\">Fáze programu</span><span class=\"progpct\"><b id=\"ov-pct\">"+s.pct+"</b>% · "+s.done+"/"+s.total+" dní</span></div>"
+   +"<div class=\"progwrap reveal\"><div class=\"progwrap-top\"><span class=\"eyebrow\" style=\"margin:0\">Fáze programu</span><span class=\"progpct\"><b id=\"ov-pct\">"+s.pct+"</b>% · "+s.done+"/"+s.total+" úkolů</span></div>"
    +"<div class=\"shimmer-bar\"><i id=\"ov-fill\" style=\"clip-path:inset(0 "+(100-s.pct)+"% 0 0 round 100px)\"><span class=\"shine\"></span></i></div>"
    +"<div class=\"miles\">"+miles+"</div></div>"
    +today
@@ -107,24 +87,24 @@ function renderPrehled(){
 
 function renderPlan(){
   var h="<p class=\"eyebrow\">Akční plán pro Nejlepší agenturu</p>"
-   +"<h1>Plán na <span class=\"g\">každý den</span></h1>"
-   +"<p class=\"lead\">Odškrtávej. Kapitoly a materiály se odemykají, jak plníš týdny. Každý večer pošli splněný úkol do WhatsAppu.</p>"
+   +"<h1>Plán po <span class=\"g\">blocích</span></h1>"
+   +"<p class=\"lead\">Žádné datumy ani dny. Jdi blok po bloku svým tempem, odškrtávej hotové úkoly a každý splněný pošli do WhatsAppu.</p>"
    +"<div class=\"quote reveal\">"+md(UPF.planIntro).replace(/^<p>|<\/p>$/g,"").replace(/<\/p>\n?<p>/g,"<br>")+"</div>";
-  UPF.plan.forEach(function(w,wi){
-    var days=w.days.filter(function(d){return !d.off;});
-    var dn=days.filter(function(d){return done(d.n);}).length;
-    h+="<section class=\"week reveal\"><div class=\"week-head\"><h2>"+esc(w.week)+"</h2><span class=\"sub\">"+esc(w.sub)+"</span><span class=\"cnt\" data-week=\""+wi+"\">"+dn+"/"+days.length+"</span></div>";
-    w.days.forEach(function(d){
-      var lines=d.task.split("\n");
+  UPF.blocks.forEach(function(bl,bi){
+    var dn=bl.tasks.filter(function(t){return done(t.id);}).length;
+    var ok=dn===bl.tasks.length;
+    h+="<section class=\"week reveal"+(ok?" wdone":"")+"\" id=\"block-"+bl.id+"\"><div class=\"week-head\"><h2>"+esc(bl.ico)+" "+esc(bl.name)+"</h2><span class=\"sub\">"+esc(bl.sub)+"</span><span class=\"cnt\" data-block=\""+bi+"\">"+dn+"/"+bl.tasks.length+"</span></div>";
+    bl.tasks.forEach(function(t,ti){
+      var lines=t.task.split("\n");
       var main=inline(lines[0]);
       var rest=lines.slice(1).map(function(x){return inline(x);}).join("<br>");
-      var pb=d.pb?" &nbsp;<a class=\"pblink\" href=\"#"+PB_NAV[d.pb]+"\" data-nav=\""+PB_NAV[d.pb]+"\">📚 kapitola</a>":"";
-      h+="<label class=\"day"+(d.off?" off":"")+(done(d.n)?" done":"")+"\" id=\"day-"+d.n+"\" data-day=\""+d.n+"\">"
-       +"<span class=\"num\">Den "+d.n+"<span class=\"date\">"+(d.off?"":dayDate(d.n))+"</span></span>"
+      var pb=t.pb?" &nbsp;<a class=\"pblink\" href=\"#"+PB_NAV[t.pb]+"\" data-nav=\""+PB_NAV[t.pb]+"\">📚 kapitola</a>":"";
+      h+="<label class=\"day"+(done(t.id)?" done":"")+"\" id=\"task-"+t.id+"\" data-task=\""+t.id+"\">"
+       +"<span class=\"num\">Úkol "+(ti+1)+"</span>"
        +"<span class=\"task\">"+main+(rest?"<br>"+rest:"")
-       +(d.submit?"<span class=\"sub\"><b>Do WhatsAppu:</b> "+esc(d.submit)+"</span>":"")
+       +(t.submit?"<span class=\"sub\"><b>Do WhatsAppu:</b> "+esc(t.submit)+"</span>":"")
        +pb+"</span>"
-       +(d.off?"<span></span>":"<input type=\"checkbox\" "+(done(d.n)?"checked":"")+" data-n=\""+d.n+"\">")
+       +"<input type=\"checkbox\" "+(done(t.id)?"checked":"")+" data-t=\""+t.id+"\">"
        +"</label>";
     });
     h+="</section>";
@@ -133,10 +113,6 @@ function renderPlan(){
 }
 
 function renderSection(sec){
-  if(!sectionUnlocked(sec.id)){
-    return "<p class=\"eyebrow\">"+sec.eyebrow+"</p><h1>"+sec.title+"</h1>"
-     +"<div class=\"locked-card reveal\"><div class=\"lock-ic\">🔒</div><div><b>Zatím zamčeno</b><p>"+unlockLabel(sec.id)+". Odškrtávej úkoly v Plánu a kapitola se odemkne sama.</p><button class=\"btn ghost\" data-nav=\"plan\">Otevřít plán →</button></div></div>";
-  }
   return "<p class=\"eyebrow\">"+sec.eyebrow+"</p><h1>"+sec.title+"</h1>"
    +"<p class=\"lead\">"+esc(sec.lead)+"</p>"
    +"<div class=\"content reveal\">"+md(sec.md)+"</div>";
@@ -155,15 +131,14 @@ function buildSidebar(){
   navItems().forEach(function(it){
     var g=groups[it.id];
     if(g&&g!==lastG){h+="<div class=\"sb-group\">"+g+"</div>";lastG=g;}
-    var locked=(UPF.unlocks[it.id]!==undefined&&UPF.unlocks[it.id]>0&&!sectionUnlocked(it.id));
-    h+="<div class=\"sb-link"+(locked?" locked":"")+"\" data-nav=\""+it.id+"\"><span class=\"ico\">"+it.ico+"</span>"+it.nav
-      +(it.id==="plan"?"<span class=\"n\" id=\"sb-count\"></span>":(locked?"<span class=\"lk\">🔒</span>":""))+"</div>";
+    h+="<div class=\"sb-link\" data-nav=\""+it.id+"\"><span class=\"ico\">"+it.ico+"</span>"+it.nav
+      +(it.id==="plan"?"<span class=\"n\" id=\"sb-count\"></span>":"")+"</div>";
   });
   $("#sb-nav").innerHTML=h;
   $$(".sb-link").forEach(function(l){l.classList.toggle("active",l.dataset.nav===currentId);});
 }
 var currentId="prehled";
-function show(id, gotoDay){
+function show(id, gotoTask){
   currentId=id;
   $$(".page").forEach(function(p){p.classList.remove("on");});
   var pg=$("#page-"+id);if(!pg)return;
@@ -173,8 +148,8 @@ function show(id, gotoDay){
   pg.classList.add("on");
   buildSidebar();
   $(".sidebar").classList.remove("open");$(".scrim").classList.remove("on");
-  if(gotoDay){
-    var el=$("#day-"+gotoDay);
+  if(gotoTask){
+    var el=$("#task-"+gotoTask);
     if(el){el.scrollIntoView({behavior:"smooth",block:"center"});el.classList.add("flash");setTimeout(function(){el.classList.remove("flash");},1700);}
   } else window.scrollTo(0,0);
   if(history.replaceState)history.replaceState(null,"","#"+id);
@@ -189,8 +164,10 @@ function refreshCounts(){
   var ov=$("#ov-fill");if(ov)ov.style.clipPath="inset(0 "+(100-s.pct)+"% 0 0 round 100px)";
   var ovp=$("#ov-pct");if(ovp)ovp.textContent=s.pct;
   $$(".week-head .cnt").forEach(function(el){
-    var wi=+el.dataset.week,days=UPF.plan[wi].days.filter(function(d){return !d.off;});
-    el.textContent=days.filter(function(d){return done(d.n);}).length+"/"+days.length;
+    var bi=+el.dataset.block,ts=UPF.blocks[bi].tasks;
+    var dn=ts.filter(function(t){return done(t.id);}).length;
+    el.textContent=dn+"/"+ts.length;
+    var sec=el.closest(".week");if(sec)sec.classList.toggle("wdone",dn===ts.length);
   });
 }
 function reveal(){$$(".reveal:not(.in)").forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight-30)el.classList.add("in");});}
@@ -224,14 +201,14 @@ document.addEventListener("DOMContentLoaded",function(){
 
   document.addEventListener("click",function(e){
     if(e.target.closest(".sb-brand")||e.target.closest(".logo-egg")){carEgg();return;}
-    var gd=e.target.closest("[data-goday]");
-    if(gd){show("plan",+gd.dataset.goday);return;}
+    var gd=e.target.closest("[data-gotask]");
+    if(gd){show("plan",gd.dataset.gotask);return;}
     var nv=e.target.closest("[data-nav]");
     if(nv){e.preventDefault();show(nv.dataset.nav);return;}
     var pc=e.target.closest(".prompt-copy");
     if(pc){var pre=pc.parentNode.querySelector("pre");navigator.clipboard.writeText(pre.textContent).then(function(){pc.textContent="Zkopírováno ✓";setTimeout(function(){pc.textContent="Kopírovat";},1600);});return;}
     if(e.target.matches(".day input[type=checkbox]")){
-      var n=+e.target.dataset.n;setDone(n,e.target.checked);
+      var tid=e.target.dataset.t;setDone(tid,e.target.checked);
       e.target.closest(".day").classList.toggle("done",e.target.checked);
       refreshCounts();buildSidebar();
     }
